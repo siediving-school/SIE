@@ -81,5 +81,29 @@
       "prerequisites": ["持有PADI开放水域潜水员认证（或同等认证）。","至少15岁（青少年高级为12岁）。","良好的身体健康状况。"],
       "cta": "晋级到下一级别"
     }
+  },
+  "equipment": {
+    "badge": "🤿 安全 · 技术 · 舒适",
+    "title": "在哥伦比亚安全潜水的装备",
+    "desc": "在SIE DIVING，我们不断更新装备以确保您的安全。太平洋（戈尔戈纳、马尔佩洛）和加勒比海（塔甘加）的条件需要最佳的装备。",
+    "infographic_alt": "潜水装备信息图",
+    "items": [
+      { "title": "潜水面镜", "desc": "软硅胶配钢化玻璃。" },
+      { "title": "脚蹼", "desc": "轻量化设计，优化推进力。" },
+      { "title": "浮力控制装置 (BCD)", "desc": "完美的浮力控制。" },
+      { "title": "调节器", "desc": "高性能呼吸系统。" },
+      { "title": "潜水电脑表", "desc": "监控时间、深度和免减压时间。" },
+      { "title": "潜水服", "desc": "适应水温的保暖保护。" },
+      { "title": "压力表", "desc": "精确控制剩余空气。" },
+      { "title": "气瓶", "desc": "11L (80 cf) 铝制气瓶。" }
+    ],
+    "ocean_caribbean": "哥伦比亚加勒比海",
+    "ocean_caribbean_vis": "能见度: 15–30m",
+    "ocean_caribbean_curr": "水流: 弱到中等",
+    "ocean_caribbean_suit": "潜水服: 3mm (温水)",
+    "ocean_pacific": "哥伦比亚太平洋",
+    "ocean_pacific_vis": "能见度: 10–25m",
+    "ocean_pacific_curr": "水流: 强 (戈尔戈纳/马尔佩洛)",
+    "ocean_pacific_suit": "潜水服: 5mm或7mm"
   }
 }

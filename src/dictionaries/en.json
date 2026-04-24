@@ -132,5 +132,54 @@
       ],
       "cta": "Advance to the Next Level"
     }
+  },
+  "equipment": {
+    "badge": "🤿 Safety · Technology · Comfort",
+    "title": "Equipment for Safe Diving in Colombia",
+    "desc": "Two oceans, two different realities. At SIE DIVING we select and maintain the right gear for the specific conditions of the Colombian Caribbean and Pacific.",
+    "infographic_alt": "Colombia Diving Equipment Visual Guide",
+    "ocean_caribbean": "Colombian Caribbean",
+    "ocean_caribbean_vis": "15–30 m visibility",
+    "ocean_caribbean_curr": "Mild currents",
+    "ocean_caribbean_suit": "3 mm wetsuit",
+    "ocean_pacific": "Colombian Pacific",
+    "ocean_pacific_vis": "10–25 m visibility",
+    "ocean_pacific_curr": "Strong currents",
+    "ocean_pacific_suit": "5–7 mm wetsuit",
+    "brands_title": "TRUSTED BRANDS",
+    "items": [
+      {
+        "title": "Diving Mask",
+        "desc": "Tempered double-lens glass and hypoallergenic silicone. A perfect seal is essential in Colombia's Caribbean and Pacific waters."
+      },
+      {
+        "title": "Buoyancy Control Device",
+        "desc": "Controls buoyancy in changing waters. Essential for the strong currents of Malpelo and Gorgona in the Pacific."
+      },
+      {
+        "title": "First & Second Stage Regulator",
+        "desc": "Your air source underwater. We use certified DIN regulators, checked before every dive on both coasts."
+      },
+      {
+        "title": "Wetsuit",
+        "desc": "Caribbean (Taganga, Providencia): 3 mm · 26–29 °C. Pacific (Gorgona, Malpelo): 5–7 mm · 20–24 °C. Always the right thickness for each ocean."
+      },
+      {
+        "title": "Dive Computer",
+        "desc": "Real-time monitoring of depth, time and no-decompression limits. Mandatory for technical Pacific dives."
+      },
+      {
+        "title": "Underwater Torch",
+        "desc": "Reveals true colors below 10 m. Essential in Providencia's coral caves and the Pacific's dark depths."
+      },
+      {
+        "title": "SMB Surface Marker Buoy",
+        "desc": "Signals your position when surfacing in open sea. Indispensable on ocean dives at Malpelo and Gorgona."
+      },
+      {
+        "title": "Propulsion Fins",
+        "desc": "Blade or split fins depending on currents. Pacific currents demand more power than the warm Caribbean waters."
+      }
+    ]
   }
 }

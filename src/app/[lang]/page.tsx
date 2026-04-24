@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import Image from "next/image";
 import { getDictionary } from "../../i18n";
 import { Locale } from "../../i18n";
 import ExpeditionsCarousel from "../../components/ExpeditionsCarousel";
@@ -18,7 +19,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         "@type": "DivingSchool",
         "name": "SIE DIVING AND ADVENTURE",
         "url": "https://siediving.com",
-        "logo": "https://siediving.com/images/logo.png",
+        "logo": "https://siediving.com/logo-sie.png",
         "description": "Escuela de buceo PADI líder del Caribe colombiano con sede en Taganga, Santa Marta. Cursos Open Water, Advanced y expediciones a Providencia, Isla Fuerte, Gorgona y Malpelo.",
         "telephone": "+573017836467",
         "address": {
@@ -106,21 +107,21 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       {/* (I) INTERÉS - POR QUÉ TAGANGA */}
       {dict.interest && (
-        <section className={`${styles.expeditionSection} section`}>
+        <section className={`${styles.interestSection} section`}>
           <div className="container">
             <h2 className="text-gradient" style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '1rem' }}>
               {dict.interest.title}
             </h2>
-            <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '3rem', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
+            <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '2rem', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
               {dict.interest.desc}
             </p>
 
-            <div className={styles.grid}>
+            <div className={styles.featureGrid}>
               {dict.interest.features?.map((feature: any, idx: number) => (
-                <div key={idx} className={`glass-panel ${styles.card}`}>
+                <div key={idx} className={`glass-panel ${styles.featureCard}`}>
                   <div style={{ fontSize: '2.5rem', color: 'var(--color-primary)', marginBottom: '1rem' }}>✦</div>
-                  <h3 className={styles.cardTitle} style={{ color: 'white', fontSize: '1.2rem' }}>{feature.title}</h3>
-                  <p style={{ color: 'var(--color-text-muted)' }}>{feature.desc}</p>
+                  <h3 className={styles.featureTitle} style={{ color: 'white', fontSize: '1.2rem' }}>{feature.title}</h3>
+                  <p className={styles.featureDesc}>{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -130,117 +131,98 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       {/* EQUIPOS DE BUCEO SEGURO */}
       {(() => {
-        const isEs = lang === 'es';
-        const GEAR = [
-          {
-            icon: '🥽',
-            titleEs: 'Máscara de Buceo',
-            titleEn: 'Diving Mask',
-            descEs: 'Vidrio templado de doble lente y silicona hipoalergénica. Ajuste hermético esencial en las aguas del Caribe y el Pacífico colombiano.',
-            descEn: 'Tempered double-lens glass and hypoallergenic silicone. A perfect seal is essential in Colombia\'s Caribbean and Pacific waters.',
-          },
-          {
-            icon: '🦺',
-            titleEs: 'Chaleco Hidrostático (BCD)',
-            titleEn: 'Buoyancy Control Device',
-            descEs: 'Regula tu flotabilidad en aguas cambiantes. Imprescindible para las fuertes corrientes de Malpelo y Gorgona en el Pacífico.',
-            descEn: 'Controls buoyancy in changing waters. Essential for the strong currents of Malpelo and Gorgona in the Pacific.',
-          },
-          {
-            icon: '💨',
-            titleEs: 'Regulador de Primera y Segunda Etapa',
-            titleEn: 'First & Second Stage Regulator',
-            descEs: 'Tu fuente de aire bajo el agua. Usamos reguladores DIN certificados, revisados antes de cada inmersión en nuestras dos costas.',
-            descEn: 'Your air source underwater. We use certified DIN regulators, checked before every dive on both coasts.',
-          },
-          {
-            icon: '🌊',
-            titleEs: 'Traje de Neopreno',
-            titleEn: 'Wetsuit',
-            descEs: 'Caribe (Taganga, Providencia): 3 mm · 26–29 °C. Pacífico (Gorgona, Malpelo): 5–7 mm · 20–24 °C. Siempre el grosor correcto según el océano.',
-            descEn: 'Caribbean (Taganga, Providencia): 3 mm · 26–29 °C. Pacific (Gorgona, Malpelo): 5–7 mm · 20–24 °C. Always the right thickness for each ocean.',
-          },
-          {
-            icon: '⌚',
-            titleEs: 'Computador de Buceo',
-            titleEn: 'Dive Computer',
-            descEs: 'Monitoreo en tiempo real de profundidad, tiempo y límites de no descompresión. Obligatorio en las inmersiones técnicas del Pacífico.',
-            descEn: 'Real-time monitoring of depth, time and no-decompression limits. Mandatory for technical Pacific dives.',
-          },
-          {
-            icon: '🔦',
-            titleEs: 'Linterna Subacuática',
-            titleEn: 'Underwater Torch',
-            descEs: 'Revela los colores reales a partir de los 10 m. Esencial en las grutas coralinas de Providencia y los fondos oscuros del Pacífico.',
-            descEn: 'Reveals true colors below 10 m. Essential in Providencia\'s coral caves and the Pacific\'s dark depths.',
-          },
-          {
-            icon: '🎯',
-            titleEs: 'Boya SMB (Señal de Superficie)',
-            titleEn: 'SMB Surface Marker Buoy',
-            descEs: 'Señaliza tu posición al salir en mar abierto. Indispensable en las salidas oceánicas de Malpelo y Gorgona.',
-            descEn: 'Signals your position when surfacing in open sea. Indispensable on ocean dives at Malpelo and Gorgona.',
-          },
-          {
-            icon: '🐟',
-            titleEs: 'Aletas de Propulsión',
-            titleEn: 'Propulsion Fins',
-            descEs: 'Aletas de paleta o split según la corriente. Las corrientes del Pacífico exigen mayor potencia que las aguas cálidas del Caribe.',
-            descEn: 'Blade or split fins depending on currents. Pacific currents demand more power than the warm Caribbean waters.',
-          },
-        ];
         return (
           <section className={styles.equipmentSection} id="equipo-buceo">
             <div className="container">
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                 <span className={styles.equipBadge}>
-                  🤿 {isEs ? 'Seguridad · Tecnología · Confort' : 'Safety · Technology · Comfort'}
+                  {dict.equipment.badge}
                 </span>
                 <h2 className={`text-gradient ${styles.equipTitle}`}>
-                  {isEs ? 'Equipo para un Buceo Seguro en Colombia' : 'Equipment for Safe Diving in Colombia'}
+                  {dict.equipment.title}
                 </h2>
                 <p className={styles.equipDesc}>
-                  {isEs
-                    ? 'Dos océanos, dos realidades distintas. En SIE DIVING seleccionamos y mantenemos el equipo adecuado para las condiciones específicas del Caribe y el Pacífico colombiano.'
-                    : 'Two oceans, two different realities. At SIE DIVING we select and maintain the right gear for the specific conditions of the Colombian Caribbean and Pacific.'}
+                  {dict.equipment.desc}
                 </p>
               </div>
 
+              {/* INFOGRAPHIC CENTERPIECE */}
+              <div className={styles.equipInfographic}>
+                <Image 
+                  src="/images/equipo-infografia.jpg" 
+                  alt={dict.equipment.infographic_alt}
+                  fill
+                  sizes="100vw"
+                  priority
+                />
+              </div>
+
               <div className={styles.equipGrid}>
-                {GEAR.map((item, i) => (
-                  <div key={i} className={`glass-panel ${styles.equipCard}`}>
-                    <div className={styles.equipIcon}>{item.icon}</div>
-                    <h3 className={styles.equipCardTitle}>{isEs ? item.titleEs : item.titleEn}</h3>
-                    <p className={styles.equipCardDesc}>{isEs ? item.descEs : item.descEn}</p>
-                  </div>
-                ))}
+                {dict.equipment.items.map((item: any, i: number) => {
+                  const images = [
+                    'https://images.unsplash.com/photo-1596328325026-6a4a7f058098?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1610486337583-04b31174092b?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1621217036735-a77c3855ff4b?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1510414696678-2415ea84792e?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1513253245468-b7781b29a286?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1510619865039-4977464a2f45?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1588616405785-02cd201f8101?q=80&w=600&auto=format&fit=crop'
+                  ];
+                  return (
+                    <div key={i} className={`glass-panel ${styles.equipCard}`}>
+                      <div className={styles.equipImageWrap}>
+                        <Image src={images[i]} alt={item.title} fill sizes="(max-width: 768px) 100vw, 300px" />
+                      </div>
+                      <div className={styles.equipContent}>
+                        <h3 className={styles.equipCardTitle}>{item.title}</h3>
+                        <p className={styles.equipCardDesc}>{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Ocean conditions banner */}
               <div className={styles.oceanBanner}>
                 <div className={styles.oceanCard}>
                   <div className={styles.oceanEmoji}>🌴</div>
-                  <div className={styles.oceanName}>{isEs ? 'Caribe Colombiano' : 'Colombian Caribbean'}</div>
+                  <div className={styles.oceanName}>{dict.equipment.ocean_caribbean}</div>
                   <div className={styles.oceanSites}>Taganga · Providencia · Isla Fuerte</div>
                   <ul className={styles.oceanList}>
                     <li>🌡️ 26–29 °C</li>
-                    <li>👁️ {isEs ? 'Visibilidad 15–30 m' : '15–30 m visibility'}</li>
-                    <li>🌊 {isEs ? 'Corrientes suaves' : 'Mild currents'}</li>
-                    <li>🤿 {isEs ? 'Traje 3 mm' : '3 mm wetsuit'}</li>
+                    <li>👁️ {dict.equipment.ocean_caribbean_vis}</li>
+                    <li>🌊 {dict.equipment.ocean_caribbean_curr}</li>
+                    <li>🤿 {dict.equipment.ocean_caribbean_suit}</li>
                   </ul>
                 </div>
                 <div className={styles.oceanDivider}>⚡</div>
                 <div className={`${styles.oceanCard} ${styles.oceanCardPacific}`}>
                   <div className={styles.oceanEmoji}>🦈</div>
-                  <div className={styles.oceanName}>{isEs ? 'Pacífico Colombiano' : 'Colombian Pacific'}</div>
+                  <div className={styles.oceanName}>{dict.equipment.ocean_pacific}</div>
                   <div className={styles.oceanSites}>Gorgona · Malpelo</div>
                   <ul className={styles.oceanList}>
                     <li>🌡️ 20–24 °C</li>
-                    <li>👁️ {isEs ? 'Visibilidad 10–20 m' : '10–20 m visibility'}</li>
-                    <li>🌊 {isEs ? 'Corrientes fuertes' : 'Strong currents'}</li>
-                    <li>🤿 {isEs ? 'Traje 5–7 mm' : '5–7 mm wetsuit'}</li>
+                    <li>👁️ {dict.equipment.ocean_pacific_vis}</li>
+                    <li>🌊 {dict.equipment.ocean_pacific_curr}</li>
+                    <li>🤿 {dict.equipment.ocean_pacific_suit}</li>
                   </ul>
                 </div>
+              </div>
+            </div>
+
+            {/* BRANDS CAROUSEL */}
+            <div className={styles.brandsWrapper}>
+              <div className={styles.brandsTitle}>
+                {dict.equipment.brands_title}
+              </div>
+              <div className={styles.brandsTicker}>
+                {/* Double the array for seamless scrolling */}
+                {[...["Cressi", "Scubapro", "Mares", "Aqualung", "Suunto", "Apeks", "Garmin", "Tusa"], ...["Cressi", "Scubapro", "Mares", "Aqualung", "Suunto", "Apeks", "Garmin", "Tusa"]].map((brand, idx) => (
+                  <div key={idx} className={styles.brandItem}>
+                    {brand}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -258,16 +240,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               {dict.desire.date_highlight}
             </p>
 
-            <div className={styles.grid}>
+            <div className={styles.courseGrid}>
               {/* PADI Open Water */}
-              <div className={`glass-panel ${styles.card}`} style={{ borderTop: '4px solid var(--color-primary)' }}>
-                <h3 className={styles.cardTitle}>{dict.desire.padi_ow.title}</h3>
-                <p style={{ color: 'var(--color-text-muted)' }}>{dict.desire.padi_ow.desc}</p>
-                <div className={styles.cardPrice}>{dict.desire.padi_ow.price}</div>
-                <ul style={{ listStyle: 'none', textAlign: 'left', margin: '2rem 0', color: '#ccc' }}>
+              <div className={`glass-panel ${styles.courseCard}`} style={{ borderTop: '4px solid var(--color-primary)' }}>
+                <h3 className={styles.courseCardTitle}>{dict.desire.padi_ow.title}</h3>
+                <p className={styles.courseCardDesc}>{dict.desire.padi_ow.desc}</p>
+                <div className={styles.coursePrice}>{dict.desire.padi_ow.price}</div>
+                <ul className={styles.featureList} style={{ listStyle: 'none', textAlign: 'left', margin: '2rem 0', color: '#ccc' }}>
                   {dict.desire.padi_ow.features?.map((feature: string, idx: number) => (
                     <li key={idx} style={{ marginBottom: '0.8rem', display: 'flex', gap: '10px' }}>
-                      <span style={{ color: 'var(--color-primary)' }}>✓</span> {feature}
+                      <span className={styles.checkIcon}>✓</span> {feature}
                     </li>
                   ))}
                 </ul>
@@ -277,14 +259,14 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               </div>
 
               {/* PADI Advanced */}
-              <div className={`glass-panel ${styles.card}`} style={{ borderTop: '4px solid var(--color-secondary)' }}>
-                <h3 className={styles.cardTitle}>{dict.desire.padi_adv.title}</h3>
-                <p style={{ color: 'var(--color-text-muted)' }}>{dict.desire.padi_adv.desc}</p>
-                <div className={styles.cardPrice}>{dict.desire.padi_adv.price}</div>
-                <ul style={{ listStyle: 'none', textAlign: 'left', margin: '2rem 0', color: '#ccc' }}>
+              <div className={`glass-panel ${styles.courseCard}`} style={{ borderTop: '4px solid var(--color-secondary)' }}>
+                <h3 className={styles.courseCardTitle}>{dict.desire.padi_adv.title}</h3>
+                <p className={styles.courseCardDesc}>{dict.desire.padi_adv.desc}</p>
+                <div className={styles.coursePrice}>{dict.desire.padi_adv.price}</div>
+                <ul className={styles.featureList} style={{ listStyle: 'none', textAlign: 'left', margin: '2rem 0', color: '#ccc' }}>
                   {dict.desire.padi_adv.features?.map((feature: string, idx: number) => (
                     <li key={idx} style={{ marginBottom: '0.8rem', display: 'flex', gap: '10px' }}>
-                      <span style={{ color: 'var(--color-secondary)' }}>✓</span> {feature}
+                      <span className={styles.checkIcon} style={{ color: 'var(--color-secondary)' }}>✓</span> {feature}
                     </li>
                   ))}
                 </ul>

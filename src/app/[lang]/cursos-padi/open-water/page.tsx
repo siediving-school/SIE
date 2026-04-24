@@ -2,6 +2,8 @@ import { getDictionary, Locale } from "../../../../i18n";
 import styles from "./page.module.css";
 import { BookOpen, Waves, Users, Award, CheckCircle2, Clock, ChevronRight } from "lucide-react";
 
+import Image from "next/image";
+
 export default async function OpenWaterPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as Locale);
@@ -17,34 +19,47 @@ export default async function OpenWaterPage({ params }: { params: Promise<{ lang
     <main className={styles.page}>
       {/* ─── HERO ─── */}
       <section className={styles.hero}>
-        <div className={styles.heroBadge}>PADI Open Water Diver</div>
-        <h1 className={styles.heroTitle}>{ow.title}</h1>
-        <p className={styles.heroSubtitle}>{ow.subtitle}</p>
-        <div className={styles.heroStats}>
-          <div className={styles.stat}>
-            <span className={styles.statValue}>3–5</span>
-            <span className={styles.statLabel}>{lang === "es" ? "Días de curso" : "Course days"}</span>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>PADI Open Water Diver</div>
+            <h1 className={styles.heroTitle}>{ow.title}</h1>
+            <p className={styles.heroSubtitle}>{ow.subtitle}</p>
+            <div className={styles.heroStats}>
+              <div className={styles.stat}>
+                <span className={styles.statValue}>3–5</span>
+                <span className={styles.statLabel}>{lang === "es" ? "Días de curso" : "Course days"}</span>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.stat}>
+                <span className={styles.statValue}>18m</span>
+                <span className={styles.statLabel}>{lang === "es" ? "Profundidad máx." : "Max. depth"}</span>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.stat}>
+                <span className={styles.statValue}>4</span>
+                <span className={styles.statLabel}>{lang === "es" ? "Inmersiones abiertas" : "Open water dives"}</span>
+              </div>
+              <div className={styles.statDivider} />
+              <div className={styles.stat}>
+                <span className={styles.statValue}>10+</span>
+                <span className={styles.statLabel}>{lang === "es" ? "Años mínimos" : "Min. age"}</span>
+              </div>
+            </div>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.heroBtn}>
+              {ow.cta}
+              <ChevronRight size={18} />
+            </a>
           </div>
-          <div className={styles.statDivider} />
-          <div className={styles.stat}>
-            <span className={styles.statValue}>18m</span>
-            <span className={styles.statLabel}>{lang === "es" ? "Profundidad máx." : "Max. depth"}</span>
-          </div>
-          <div className={styles.statDivider} />
-          <div className={styles.stat}>
-            <span className={styles.statValue}>4</span>
-            <span className={styles.statLabel}>{lang === "es" ? "Inmersiones abiertas" : "Open water dives"}</span>
-          </div>
-          <div className={styles.statDivider} />
-          <div className={styles.stat}>
-            <span className={styles.statValue}>10+</span>
-            <span className={styles.statLabel}>{lang === "es" ? "Años mínimos" : "Min. age"}</span>
+          <div className={styles.heroImageWrap}>
+            <Image 
+              src="/images/open-water-course.jpg"
+              alt="PADI Open Water Diver Course"
+              fill
+              sizes="(max-width: 992px) 100vw, 50vw"
+              priority
+            />
           </div>
         </div>
-        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className={styles.heroBtn}>
-          {ow.cta}
-          <ChevronRight size={18} />
-        </a>
       </section>
 
       {/* ─── MODULES ─── */}
@@ -164,6 +179,29 @@ export default async function OpenWaterPage({ params }: { params: Promise<{ lang
               <h3>{lang === "es" ? "Lugar de prácticas" : "Dive site"}</h3>
               <p>{lang === "es" ? "Taganga, Santa Marta — uno de los mejores destinos de buceo del Caribe colombiano. Arrecifes vibrantes y aguas cristalinas." : "Taganga, Santa Marta — one of the best diving spots on the Colombian Caribbean. Vibrant reefs and crystal-clear waters."}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VIDEO OFICIAL ─── */}
+      <section className={styles.videoSection}>
+        <div className={styles.container}>
+          <h2 className={styles.videoTitle}>
+            {lang === "es" ? "Conoce más sobre el Open Water" : "Discover the Open Water Course"}
+          </h2>
+          <p className={styles.videoDesc}>
+            {lang === "es" 
+              ? "Descubre cómo es la experiencia, qué equipos utilizarás y todo lo que aprenderás durante el curso oficial de PADI."
+              : "See what the experience looks like, the gear you will use, and everything you will learn during the official PADI course."}
+          </p>
+          <div className={styles.videoContainer}>
+            <iframe 
+              src="https://www.youtube.com/embed/D1EE70aiU5M" 
+              title="PADI Open Water Diver Course" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </section>

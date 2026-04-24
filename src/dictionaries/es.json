@@ -132,5 +132,54 @@
       ],
       "cta": "Avanzar al Siguiente Nivel"
     }
+  },
+  "equipment": {
+    "badge": "🤿 Seguridad · Tecnología · Confort",
+    "title": "Equipo para un Buceo Seguro en Colombia",
+    "desc": "Dos océanos, dos realidades distintas. En SIE DIVING seleccionamos y mantenemos el equipo adecuado para las condiciones específicas del Caribe y el Pacífico colombiano.",
+    "infographic_alt": "Guía Visual de Equipo de Buceo en Colombia",
+    "ocean_caribbean": "Caribe Colombiano",
+    "ocean_caribbean_vis": "Visibilidad 15–30 m",
+    "ocean_caribbean_curr": "Corrientes suaves",
+    "ocean_caribbean_suit": "Traje 3 mm",
+    "ocean_pacific": "Pacífico Colombiano",
+    "ocean_pacific_vis": "Visibilidad 10–25 m",
+    "ocean_pacific_curr": "Corrientes fuertes",
+    "ocean_pacific_suit": "Traje 5–7 mm",
+    "brands_title": "MARCAS DE CONFIANZA",
+    "items": [
+      {
+        "title": "Máscara de Buceo",
+        "desc": "Vidrio templado de doble lente y silicona hipoalergénica. Ajuste hermético esencial en las aguas del Caribe y el Pacífico colombiano."
+      },
+      {
+        "title": "Chaleco Hidrostático (BCD)",
+        "desc": "Regula tu flotabilidad en aguas cambiantes. Imprescindible para las fuertes corrientes de Malpelo y Gorgona en el Pacífico."
+      },
+      {
+        "title": "Regulador de Primera y Segunda Etapa",
+        "desc": "Tu fuente de aire bajo el agua. Usamos reguladores DIN certificados, revisados antes de cada inmersión en nuestras dos costas."
+      },
+      {
+        "title": "Traje de Neopreno",
+        "desc": "Caribe (Taganga, Providencia): 3 mm · 26–29 °C. Pacífico (Gorgona, Malpelo): 5–7 mm · 20–24 °C. Siempre el grosor correcto según el océano."
+      },
+      {
+        "title": "Computador de Buceo",
+        "desc": "Monitoreo en tiempo real de profundidad, tiempo y límites de no descompresión. Obligatorio en las inmersiones técnicas del Pacífico."
+      },
+      {
+        "title": "Linterna Subacuática",
+        "desc": "Revela los colores reales a partir de los 10 m. Esencial en las grutas coralinas de Providencia y los fondos oscuros del Pacífico."
+      },
+      {
+        "title": "Boya SMB (Señal de Superficie)",
+        "desc": "Señaliza tu posición al salir en mar abierto. Indispensable en las salidas oceánicas de Malpelo y Gorgona."
+      },
+      {
+        "title": "Aletas de Propulsión",
+        "desc": "Aletas de paleta o split según la corriente. Las corrientes del Pacífico exigen mayor potencia que las aguas cálidas del Caribe."
+      }
+    ]
   }
 }

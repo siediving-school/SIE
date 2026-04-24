@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu, X, Waves, BookOpen, Compass, MapPin, Anchor } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown, Menu, X, BookOpen, Compass, MapPin, Anchor } from "lucide-react";
 import styles from "./Navbar.module.css";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -52,8 +53,14 @@ export default function Navbar({ lang, dict }: NavbarProps) {
       <div className={styles.inner}>
         {/* Logo */}
         <Link href={`/${lang}`} className={styles.logo}>
-          <Waves size={26} strokeWidth={2.5} />
-          <span>SIE <strong>DIVING</strong></span>
+          <Image 
+            src="/logo-sie.png" 
+            alt="SIE Diving" 
+            width={215} 
+            height={85} 
+            className={styles.logoImage}
+            priority
+          />
         </Link>
 
         {/* Desktop menu */}

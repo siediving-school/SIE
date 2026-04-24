@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -33,26 +33,18 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
-  color: #fff;
-  font-size: 1.25rem;
-  letter-spacing: 0.04em;
   flex-shrink: 0;
+  height: 85px;
 }
 
-.logo svg {
-  color: #00b4d8;
-  flex-shrink: 0;
+.logoImage {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
 }
 
-.logo strong {
-  font-weight: 800;
-  background: linear-gradient(135deg, #00b4d8, #48cae4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+
 
 /* ---- Desktop menu ---- */
 .desktopMenu {

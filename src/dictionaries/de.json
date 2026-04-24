@@ -132,5 +132,29 @@
       ],
       "cta": "Zum nächsten Level aufsteigen"
     }
+  },
+  "equipment": {
+    "badge": "🤿 Sicherheit · Technologie · Komfort",
+    "title": "Ausrüstung für sicheres Tauchen in Kolumbien",
+    "desc": "Bei SIE DIVING erneuern wir ständig unsere Ausrüstung, um Ihre Sicherheit zu gewährleisten. Die Bedingungen im Pazifik (Gorgona, Malpelo) und in der Karibik (Taganga) erfordern optimale Ausrüstung.",
+    "infographic_alt": "Tauchausrüstung Infografik",
+    "items": [
+      { "title": "Tauchmaske", "desc": "Weiches Silikon mit gehärtetem Glas." },
+      { "title": "Flossen", "desc": "Leichtes Design zur Optimierung des Vortriebs." },
+      { "title": "Tarierweste (BCD)", "desc": "Perfekte Auftriebskontrolle." },
+      { "title": "Atemregler", "desc": "Hochleistungs-Atemregler." },
+      { "title": "Tauchcomputer", "desc": "Überwachung von Zeit, Tiefe und Nullzeit." },
+      { "title": "Neoprenanzug", "desc": "Wärmeschutz an das Wasser angepasst." },
+      { "title": "Finimeter", "desc": "Präzise Kontrolle der verbleibenden Luft." },
+      { "title": "Tauchflasche", "desc": "11L (80 cf) Aluminiumzylinder." }
+    ],
+    "ocean_caribbean": "Kolumbianische Karibik",
+    "ocean_caribbean_vis": "Sichtweite: 15–30m",
+    "ocean_caribbean_curr": "Strömung: Schwach bis mäßig",
+    "ocean_caribbean_suit": "Anzug: 3mm (Warmes Wasser)",
+    "ocean_pacific": "Kolumbianischer Pazifik",
+    "ocean_pacific_vis": "Sichtweite: 10–25m",
+    "ocean_pacific_curr": "Strömung: Stark (Gorgona/Malpelo)",
+    "ocean_pacific_suit": "Anzug: 5mm oder 7mm"
   }
 }

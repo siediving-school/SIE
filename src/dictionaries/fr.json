@@ -132,5 +132,29 @@
       ],
       "cta": "Passer au Niveau Suivant"
     }
+  },
+  "equipment": {
+    "badge": "🤿 Sécurité · Technologie · Confort",
+    "title": "Équipement pour une Plongée Sûre en Colombie",
+    "desc": "Chez SIE DIVING, nous renouvelons constamment notre équipement pour garantir votre sécurité. Les conditions dans le Pacifique (Gorgona, Malpelo) et les Caraïbes (Taganga) requièrent un équipement optimal.",
+    "infographic_alt": "Infographie équipement de plongée",
+    "items": [
+      { "title": "Masque de Plongée", "desc": "Silicone souple avec verre trempé." },
+      { "title": "Palmes", "desc": "Conception légère pour optimiser la propulsion." },
+      { "title": "Gilet Stabilisateur (BCD)", "desc": "Contrôle parfait de la flottabilité." },
+      { "title": "Détendeur", "desc": "Système respiratoire de haute performance." },
+      { "title": "Ordinateur de Plongée", "desc": "Suivi du temps, profondeur et non-décompression." },
+      { "title": "Combinaison", "desc": "Protection thermique adaptée à l'eau." },
+      { "title": "Manomètre", "desc": "Contrôle précis de l'air restant." },
+      { "title": "Bouteille", "desc": "Cylindre en aluminium de 11L (80 cf)." }
+    ],
+    "ocean_caribbean": "Caraïbes Colombiennes",
+    "ocean_caribbean_vis": "Visibilité: 15–30m",
+    "ocean_caribbean_curr": "Courants: Faibles à modérés",
+    "ocean_caribbean_suit": "Combinaison: 3mm (Eau chaude)",
+    "ocean_pacific": "Pacifique Colombien",
+    "ocean_pacific_vis": "Visibilité: 10–25m",
+    "ocean_pacific_curr": "Courants: Forts (Gorgona/Malpelo)",
+    "ocean_pacific_suit": "Combinaison: 5mm ou 7mm"
   }
 }
