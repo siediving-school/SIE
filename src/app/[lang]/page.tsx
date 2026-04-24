@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { getDictionary } from "../../i18n";
 import { Locale } from "../../i18n";
+import ExpeditionsCarousel from "../../components/ExpeditionsCarousel";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -26,7 +27,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           playsInline 
           className={styles.heroVideo}
         >
-          <source src="/hero-background.mp4" type="video/mp4" />
+          <source src="/feroz.mp4" type="video/mp4" />
         </video>
         <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
@@ -116,60 +117,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </section>
       )}
 
-      {/* DESTINOS - GALERÍA VISUAL */}
-      <section className="section" style={{ background: 'var(--color-bg)' }}>
-        <div className="container">
-          <h2 className="text-gradient" style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '1rem' }}>
-            {lang === "es" ? "Nuestros Destinos Destacados" : "Our Featured Destinations"}
-          </h2>
-          <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', marginBottom: '3rem', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto 3rem auto' }}>
-            {lang === "es" ? "Desde arrecifes de coral en el Caribe hasta expediciones pelágicas en el Pacífico." : "From coral reefs in the Caribbean to pelagic expeditions in the Pacific."}
-          </p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            <a href={`/${lang}/destinos/malpelo`} style={{ display: 'block', textDecoration: 'none', borderRadius: '15px', overflow: 'hidden', position: 'relative', height: '300px' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/images/img-239db711.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.5s ease' }} className="hover-zoom"></div>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)' }}></div>
-              <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
-                <span style={{ background: 'var(--color-primary)', color: 'black', padding: '0.2rem 0.6rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'inline-block' }}>Pacífico</span>
-                <h3 style={{ color: 'white', margin: 0, fontSize: '1.5rem' }}>Malpelo</h3>
-                <p style={{ color: '#ccc', margin: '5px 0 0 0', fontSize: '0.9rem' }}>{lang === "es" ? "Tiburones Martillo · Vida a Bordo" : "Hammerheads · Liveaboard"}</p>
-              </div>
-            </a>
-            
-            <a href={`/${lang}/destinos/providencia`} style={{ display: 'block', textDecoration: 'none', borderRadius: '15px', overflow: 'hidden', position: 'relative', height: '300px' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/images/img-860a4676.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.5s ease' }} className="hover-zoom"></div>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)' }}></div>
-              <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
-                <span style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.2rem 0.6rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'inline-block' }}>Caribe</span>
-                <h3 style={{ color: 'white', margin: 0, fontSize: '1.5rem' }}>Providencia</h3>
-                <p style={{ color: '#ccc', margin: '5px 0 0 0', fontSize: '0.9rem' }}>{lang === "es" ? "Arrecife · Reserva UNESCO" : "Reef · UNESCO Reserve"}</p>
-              </div>
-            </a>
-
-            <a href={`/${lang}/destinos/gorgona`} style={{ display: 'block', textDecoration: 'none', borderRadius: '15px', overflow: 'hidden', position: 'relative', height: '300px' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/images/img-f0b2070e.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.5s ease' }} className="hover-zoom"></div>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)' }}></div>
-              <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
-                <span style={{ background: 'var(--color-primary)', color: 'black', padding: '0.2rem 0.6rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'inline-block' }}>Pacífico</span>
-                <h3 style={{ color: 'white', margin: 0, fontSize: '1.5rem' }}>Gorgona</h3>
-                <p style={{ color: '#ccc', margin: '5px 0 0 0', fontSize: '0.9rem' }}>{lang === "es" ? "Ballenas · Vida a Bordo · Parque Nacional" : "Whales · Liveaboard · National Park"}</p>
-              </div>
-            </a>
-
-            <a href={`/${lang}/destinos/santa-marta`} style={{ display: 'block', textDecoration: 'none', borderRadius: '15px', overflow: 'hidden', position: 'relative', height: '300px' }}>
-              <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('https://images.unsplash.com/photo-1586398660697-d4a1f4f56f93?w=800&q=80')", backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.5s ease' }} className="hover-zoom"></div>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%)' }}></div>
-              <div style={{ position: 'absolute', bottom: '20px', left: '20px', right: '20px' }}>
-                <span style={{ background: 'var(--color-secondary)', color: 'white', padding: '0.2rem 0.6rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'inline-block' }}>Caribe</span>
-                <h3 style={{ color: 'white', margin: 0, fontSize: '1.5rem' }}>Santa Marta</h3>
-                <p style={{ color: '#ccc', margin: '5px 0 0 0', fontSize: '0.9rem' }}>{lang === "es" ? "Taganga · Vida Marina" : "Taganga · Marine Life"}</p>
-              </div>
-            </a>
-          </div>
-
-        </div>
-      </section>
+      {/* EXPEDICIONES - CAROUSEL */}
+      <ExpeditionsCarousel lang={lang} />
 
       {/* (A) ACCIÓN - CTA FINAL */}
       {dict.action && (
