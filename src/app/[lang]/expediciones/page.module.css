@@ -22,6 +22,16 @@
   background: #040a1c;
 }
 
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.5;
+}
+
 .heroBg {
   position: absolute;
   inset: 0;
@@ -30,6 +40,7 @@
     radial-gradient(ellipse at 80% 30%, rgba(0, 100, 200, 0.15) 0%, transparent 55%),
     radial-gradient(ellipse at 50% 100%, rgba(0, 60, 120, 0.2) 0%, transparent 60%);
   animation: heroPulse 8s ease-in-out infinite alternate;
+  z-index: 1;
 }
 
 @keyframes heroPulse {
@@ -44,7 +55,9 @@
     linear-gradient(rgba(0,180,216,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,180,216,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
+  background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  z-index: 1;
 }
 
 .heroContent {
