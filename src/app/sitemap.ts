@@ -11,12 +11,42 @@ const routes = [
   { path: "/destinos/santa-marta", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/destinos/providencia", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/destinos/isla-fuerte", priority: 0.8, changeFrequency: "monthly" as const },
-];
+  ];
+
+import { posts } from "../lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  return routes.map(({ path, priority, changeFrequency }) => ({
+  const blogRoutes = posts.map((post) => ({
+    url: `${SITE_URL}/es/noticias/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+    alternates: {
+      languages: {
+        es: `${SITE_URL}/es/noticias/${post.slug}`,
+        en: `${SITE_URL}/en/noticias/${post.slug}`,
+        "x-default": `${SITE_URL}/es/noticias/${post.slug}`,
+      },
+    },
+  }));
+
+  const blogIndexRoute = {
+    url: `${SITE_URL}/es/noticias`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+    alternates: {
+      languages: {
+        es: `${SITE_URL}/es/noticias`,
+        en: `${SITE_URL}/en/noticias`,
+        "x-default": `${SITE_URL}/es/noticias`,
+      },
+    },
+  };
+
+  const staticRoutes = routes.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE_URL}/es${path}`,
     lastModified: now,
     changeFrequency,
@@ -29,4 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
   }));
+
+  return [blogIndexRoute, ...staticRoutes, ...blogRoutes];
 }

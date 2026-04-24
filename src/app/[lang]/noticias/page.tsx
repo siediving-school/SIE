@@ -65,7 +65,7 @@ export default function NoticiasPage() {
               style={{ textDecoration: "none" }}
             >
               <article
-                className="glass-panel"
+                className="glass-panel blog-card"
                 style={{
                   borderRadius: "16px",
                   overflow: "hidden",
@@ -74,14 +74,6 @@ export default function NoticiasPage() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 20px 40px rgba(0,229,255,0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "";
                 }}
               >
                 {/* Cover placeholder */}
