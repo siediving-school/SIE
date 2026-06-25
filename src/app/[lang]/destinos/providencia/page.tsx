@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import styles from "./dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
@@ -9,6 +10,54 @@ import { generateHreflang } from "../../layout";
 
 const SITE_URL = "https://siediving.com";
 const PATH = "/destinos/providencia";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristDestination",
+      "@id": `${SITE_URL}/es${PATH}#destination`,
+      "name": "Providencia, Colombia",
+      "description": "Tercera barrera de arrecife más grande del mundo. Reserva de Biosfera UNESCO con más de 850 especies marinas. Buceo excepcional con tiburones nodriza, mantas raya y paredes coralinas a 30m.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/img-04e5f555.jpg`,
+      "touristType": ["Scuba Diving", "Adventure Tourism", "Ecotourism"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 13.3567,
+        "longitude": -81.3730,
+      },
+      "includesAttraction": [
+        { "@type": "TouristAttraction", "name": "Third Encounter", "description": "Paredes verticales de coral y cardúmenes masivos de barracudas. Uno de los 10 mejores sitios del Caribe.", "geo": { "@type": "GeoCoordinates", "latitude": 13.37, "longitude": -81.36 } },
+        { "@type": "TouristAttraction", "name": "Manta's Place", "description": "Zona de encuentro con mantas raya y tiburones nodriza que descansan en el fondo arenoso." },
+        { "@type": "TouristAttraction", "name": "Shark Dive", "description": "Inmersión guiada con tiburones grises de arrecife en su entorno natural. 100% segura." },
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Temperatura del agua", "value": "27-28°C" },
+        { "@type": "LocationFeatureSpecification", "name": "Visibilidad", "value": "20-30m" },
+        { "@type": "LocationFeatureSpecification", "name": "Reconocimiento UNESCO", "value": "Reserva de Biosfera" },
+        { "@type": "LocationFeatureSpecification", "name": "Especies marinas", "value": "+850 especies" },
+      ],
+      "containedInPlace": { "@type": "Country", "name": "Colombia" },
+    },
+    {
+      "@type": "Product",
+      "@id": `${SITE_URL}/es${PATH}#package`,
+      "name": "Paquete Expedición Providencia · SIE DIVING",
+      "description": "Paquete 3-4 días en Providencia con hospedaje, inmersiones guiadas, equipo completo y gastronomía raizal. Grupos máximo 6 personas.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/img-04e5f555.jpg`,
+      "brand": { "@type": "Brand", "name": "SIE DIVING" },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "COP",
+        "url": `${SITE_URL}/es${PATH}`,
+        "seller": { "@type": "Organization", "name": "SIE DIVING" },
+      },
+    },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -94,6 +143,7 @@ export default async function ProvidenciaPage({ params }: { params: Promise<{ la
 
   return (
     <main className={styles.page}>
+      <Script id="ld-providencia" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className={styles.hero} style={{ backgroundImage: "url('/images/img-04e5f555.jpg')" }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>

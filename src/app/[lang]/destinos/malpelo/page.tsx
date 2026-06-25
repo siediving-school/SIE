@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import styles from "../providencia/dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
@@ -9,6 +10,56 @@ import { generateHreflang } from "../../layout";
 
 const SITE_URL = "https://siediving.com";
 const PATH = "/destinos/malpelo";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristDestination",
+      "@id": `${SITE_URL}/es${PATH}#destination`,
+      "name": "Malpelo, Colombia",
+      "description": "Santuario de Flora y Fauna de Malpelo, Patrimonio de la Humanidad UNESCO. Roca aislada en el Océano Pacífico famosa por cardúmenes de cientos de tiburones martillo, tiburones sedosos y galápagos. Expedición liveaboard.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/img-239db711.jpg`,
+      "touristType": ["Scuba Diving", "Liveaboard", "Shark Diving", "Adventure Tourism"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.9711,
+        "longitude": -81.6011,
+      },
+      "includesAttraction": [
+        { "@type": "TouristAttraction", "name": "La Nevera", "description": "Estación de limpieza principal. Aquí se congregan cientos de tiburones martillo y galápagos para ser desparasitados." },
+        { "@type": "TouristAttraction", "name": "El Altar de Virginia", "description": "Formaciones rocosas impresionantes y paso de grandes pelágicos, águilas pescadoras y atunes." },
+        { "@type": "TouristAttraction", "name": "Bajo del Monstruo", "description": "Pináculo submarino donde habita el majestuoso tiburón monstruo o tiburón de puntas blancas gigante." },
+        { "@type": "TouristAttraction", "name": "La Ferretería", "description": "Cueva natural cubierta de coral donde se refugian tiburones puntas blancas y morenas verdes gigantes." },
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Temperatura del agua", "value": "26°C" },
+        { "@type": "LocationFeatureSpecification", "name": "Visibilidad", "value": "15-30m" },
+        { "@type": "LocationFeatureSpecification", "name": "Reconocimiento UNESCO", "value": "Patrimonio de la Humanidad" },
+        { "@type": "LocationFeatureSpecification", "name": "Modalidad", "value": "Liveaboard 8-10 días" },
+        { "@type": "LocationFeatureSpecification", "name": "Nivel requerido", "value": "Advanced OWD + 50 inmersiones + Nitrox" },
+      ],
+      "containedInPlace": { "@type": "Country", "name": "Colombia" },
+    },
+    {
+      "@type": "Product",
+      "@id": `${SITE_URL}/es${PATH}#package`,
+      "name": "Expedición Liveaboard Malpelo · SIE DIVING",
+      "description": "Expedición vida a bordo en Malpelo. 8-10 días, máximo 16 buzos por barco, 3-4 inmersiones diarias con Nitrox. Cardúmenes de tiburones martillo y fauna pelágica del Pacífico colombiano.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/img-239db711.jpg`,
+      "brand": { "@type": "Brand", "name": "SIE DIVING" },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "COP",
+        "url": `${SITE_URL}/es${PATH}`,
+        "seller": { "@type": "Organization", "name": "SIE DIVING" },
+      },
+    },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -95,6 +146,7 @@ export default async function MalpeloPage({ params }: { params: Promise<{ lang: 
 
   return (
     <main className={styles.page}>
+      <Script id="ld-malpelo" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className={styles.hero} style={{ position: "relative", overflow: "hidden" }}>
         {/* Background Video */}
         <video 

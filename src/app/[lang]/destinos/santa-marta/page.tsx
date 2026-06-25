@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import styles from "./dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
@@ -12,6 +13,55 @@ import { generateHreflang } from "../../layout";
 
 const SITE_URL = "https://siediving.com";
 const PATH = "/destinos/santa-marta";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristDestination",
+      "@id": `${SITE_URL}/es${PATH}#destination`,
+      "name": "Santa Marta y Taganga, Colombia",
+      "description": "El Caribe más biodiverso de Colombia. Taganga es el epicentro del buceo en Santa Marta: arrecifes de coral, morenas, tortugas y el Parque Nacional Tayrona a minutos en lancha.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/Morena.jpg`,
+      "touristType": ["Scuba Diving", "PADI Certification", "Adventure Tourism", "Ecotourism"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 11.2408,
+        "longitude": -74.1990,
+      },
+      "includesAttraction": [
+        { "@type": "TouristAttraction", "name": "El Morro", "description": "Arrecife de coral vibrante con tortugas carey y bancos de peces tropicales. Ideal para principiantes." },
+        { "@type": "TouristAttraction", "name": "La Aguja", "description": "Pared vertical cubierta de esponjas y gorgonias, con pepinos y estrellas de mar." },
+        { "@type": "TouristAttraction", "name": "Los Cañones", "description": "Cañones submarinos con rayas águila y morenas a 18-30m. Solo para Advanced Divers." },
+        { "@type": "TouristAttraction", "name": "Punta Venado", "description": "Bahía protegida ideal para Open Water con visibilidad excepcional." },
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Temperatura del agua", "value": "28°C" },
+        { "@type": "LocationFeatureSpecification", "name": "Visibilidad", "value": "10-20m" },
+        { "@type": "LocationFeatureSpecification", "name": "Nivel de acceso", "value": "Todos los niveles" },
+        { "@type": "LocationFeatureSpecification", "name": "Salidas", "value": "Diarias desde Taganga" },
+      ],
+      "containedInPlace": { "@type": "Country", "name": "Colombia" },
+    },
+    {
+      "@type": "Product",
+      "@id": `${SITE_URL}/es${PATH}#package`,
+      "name": "Buceo en Taganga · SIE DIVING",
+      "description": "Inmersiones guiadas diarias en Taganga con equipo completo. Certificaciones PADI Open Water y Advanced disponibles. Grupos máximo 6 buzos por instructor.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/Morena.jpg`,
+      "brand": { "@type": "Brand", "name": "SIE DIVING" },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "COP",
+        "url": `${SITE_URL}/es${PATH}`,
+        "seller": { "@type": "Organization", "name": "SIE DIVING" },
+      },
+    },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -118,6 +168,7 @@ export default async function SantaMartaPage({ params }: { params: Promise<{ lan
 
   return (
     <main className={styles.page}>
+      <Script id="ld-santa-marta" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ── HERO ── */}
       <section className={styles.hero} style={{ backgroundImage: "url(/Morena.jpg)" }}>
         <div className={styles.heroOverlay} />
