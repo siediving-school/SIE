@@ -84,6 +84,15 @@ const jsonLd = {
       },
     },
     {
+      "@type": "BreadcrumbList",
+      "@id": "https://siediving.com/es/destinos/isla-fuerte#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://siediving.com/es" },
+        { "@type": "ListItem", "position": 2, "name": "Destinos", "item": "https://siediving.com/es/expediciones" },
+        { "@type": "ListItem", "position": 3, "name": "Isla Fuerte", "item": "https://siediving.com/es/destinos/isla-fuerte" },
+      ],
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://siediving.com/es/destinos/isla-fuerte#faq",
       "mainEntity": [

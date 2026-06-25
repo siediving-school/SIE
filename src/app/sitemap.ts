@@ -1,8 +1,19 @@
 import { MetadataRoute } from "next";
+import { posts } from "../lib/posts";
 
 export const dynamic = "force-static";
 
 const SITE_URL = "https://siediving.com";
+const LOCALES = ["es", "en", "fr", "de", "zh", "ja"] as const;
+
+function buildAlternates(path: string) {
+  const languages: Record<string, string> = {};
+  for (const locale of LOCALES) {
+    languages[locale] = `${SITE_URL}/${locale}${path}`;
+  }
+  languages["x-default"] = `${SITE_URL}/es${path}`;
+  return { languages };
+}
 
 const routes = [
   { path: "", priority: 1.0, changeFrequency: "weekly" as const },
@@ -11,9 +22,13 @@ const routes = [
   { path: "/destinos/santa-marta", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/destinos/providencia", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/destinos/isla-fuerte", priority: 0.8, changeFrequency: "monthly" as const },
-  ];
-
-import { posts } from "../lib/posts";
+  { path: "/destinos/gorgona", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/destinos/malpelo", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/expediciones", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/tienda/reguladores", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/tienda/bcd", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/tienda/mascaras", priority: 0.7, changeFrequency: "monthly" as const },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -23,13 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: "weekly" as const,
     priority: 0.8,
-    alternates: {
-      languages: {
-        es: `${SITE_URL}/es/noticias/${post.slug}`,
-        en: `${SITE_URL}/en/noticias/${post.slug}`,
-        "x-default": `${SITE_URL}/es/noticias/${post.slug}`,
-      },
-    },
+    alternates: buildAlternates(`/noticias/${post.slug}`),
   }));
 
   const blogIndexRoute = {
@@ -37,13 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.9,
-    alternates: {
-      languages: {
-        es: `${SITE_URL}/es/noticias`,
-        en: `${SITE_URL}/en/noticias`,
-        "x-default": `${SITE_URL}/es/noticias`,
-      },
-    },
+    alternates: buildAlternates("/noticias"),
   };
 
   const staticRoutes = routes.map(({ path, priority, changeFrequency }) => ({
@@ -51,13 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency,
     priority,
-    alternates: {
-      languages: {
-        es: `${SITE_URL}/es${path}`,
-        en: `${SITE_URL}/en${path}`,
-        "x-default": `${SITE_URL}/es${path}`,
-      },
-    },
+    alternates: buildAlternates(path),
   }));
 
   return [blogIndexRoute, ...staticRoutes, ...blogRoutes];

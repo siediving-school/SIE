@@ -43,6 +43,15 @@ const jsonLd = {
       "containedInPlace": { "@type": "Country", "name": "Colombia" },
     },
     {
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_URL}/es${PATH}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": `${SITE_URL}/es` },
+        { "@type": "ListItem", "position": 2, "name": "Destinos", "item": `${SITE_URL}/es/expediciones` },
+        { "@type": "ListItem", "position": 3, "name": "Malpelo", "item": `${SITE_URL}/es${PATH}` },
+      ],
+    },
+    {
       "@type": "Product",
       "@id": `${SITE_URL}/es${PATH}#package`,
       "name": "Expedición Liveaboard Malpelo · SIE DIVING",

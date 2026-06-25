@@ -203,6 +203,128 @@ export const products: Product[] = [
       "Air Flow at 200 bar": "1850 l/min"
     }
   },
+  {
+    id: "reg-4",
+    name: "REGULADOR MK25 EVO / S620 TI",
+    description: "SCUBAPRO une su primera etapa de alto rendimiento con su nueva segunda etapa equilibrada y liviana por su barril de Titanio.",
+    price: 4612500,
+    category: "reguladores",
+    brand: "Scubapro",
+    image: "/images/regulador-mk25-evo-s620-ti.png",
+    longDescription: "El MK25 EVO / S620 Ti es un regulador premium que combina la legendaria primera etapa de pistón compensado MK25 EVO con la segunda etapa S620 Ti. Esta segunda etapa cuenta con un cilindro interno de titanio ligero y resistente a la corrosión, ofreciendo un esfuerzo respiratorio un 37% menor en comparación con el modelo S600. Es ideal para buceadores exigentes que buscan ligereza y tecnología de vanguardia.",
+    longDescriptionEn: "The MK25 EVO / S620 Ti is a premium regulator system that pairs Scubapro's flagship MK25 EVO balanced piston first stage with the S620 Ti second stage. The S620 Ti features a lightweight, corrosion-free titanium barrel inside, delivering a 37% lower inhalation effort compared to the S600. Perfect for demanding divers seeking cutting-edge performance and lightweight design.",
+    features: [
+      "Primera etapa de pistón compensado de flujo directo en latón cromado con torreta giratoria de 360°.",
+      "Extended Thermal Insulating System (XTIS) para protección térmica extrema.",
+      "Segunda etapa S620 Ti con cilindro interior de titanio ligero y ultrarresistente.",
+      "Un 37% menos de esfuerzo respiratorio en comparación con el modelo S600.",
+      "Botón de purga grande y mejorado que optimiza la circulación de aire.",
+      "Esfuerzo de inhalación ajustable por el buzo y palanca VIVA coaxial."
+    ],
+    featuresEn: [
+      "Balanced flow-through piston first stage with a 360-degree swivel turret.",
+      "Extended Thermal Insulating System (XTIS) for extreme freezing protection.",
+      "S620 Ti second stage with a lightweight and ultra-durable titanium barrel.",
+      "37% lower breathing effort compared to the classic S600.",
+      "Large, redesigned purge button that optimizes airflow.",
+      "Diver-adjustable inhalation effort knob and coaxial VIVA control."
+    ],
+    benefits: [
+      { "title": "Cilindro de Titanio", "desc": "Máxima ligereza y resistencia total a la corrosión en agua salada gracias a su núcleo de titanio." },
+      { "title": "Suavidad Insuperable", "desc": "Su diseño reduce el esfuerzo para respirar un 37%, entregando un flujo de aire increíblemente cómodo." },
+      { "title": "Enrutamiento Ideal", "desc": "La torreta giratoria de la primera etapa permite acomodar los latiguillos de forma impecable en cualquier posición." }
+    ],
+    benefitsEn: [
+      { "title": "Titanium Barrel", "desc": "Maximum weight savings and absolute corrosion resistance in salt water due to its titanium core." },
+      { "title": "Redefined Effort", "desc": "Breathing effort is reduced by 37%, delivering an incredibly smooth and natural airflow." },
+      { "title": "Perfect Routing", "desc": "The 360-degree swivel turret on the first stage ensures flawless hose placement for any configuration." }
+    ],
+    specs: {
+      "Tipo de Primera Etapa": "Pistón compensado de flujo directo",
+      "Cuerpo de la Primera Etapa": "Latón marino cromado con torreta giratoria 360°",
+      "Puertos HP": "2 opuestos",
+      "Puertos LP": "5 de alto flujo (LP High-Flow)",
+      "Tecnología Térmica": "XTIS (Aislamiento Térmico Avanzado)",
+      "Tipo de Segunda Etapa": "Neumáticamente compensada con barril de Titanio",
+      "Controles": "Perilla de inhalación ajustable y palanca VIVA dive/pre-dive",
+      "Compatibilidad Nitrox": "Hasta 40%",
+      "Peso (DIN/INT)": "570g / 790g (1ra) + 179g (2da)",
+      "Flujo de Aire a 200 bar": "1850 l/min"
+    },
+    specsEn: {
+      "First Stage Type": "Balanced flow-through piston",
+      "First Stage Body": "Chrome-plated marine brass with 360° swivel turret",
+      "HP Ports": "2 opposite",
+      "LP Ports": "5 High-Flow",
+      "Thermal Technology": "XTIS (Advanced Thermal Insulation)",
+      "Second Stage Type": "Pneumatically balanced with Titanium barrel",
+      "Control Switch": "Adjustable inhalation effort and VIVA dive/pre-dive",
+      "Nitrox Compatibility": "Up to 40%",
+      "Weight (DIN/INT)": "570g / 790g (1st) + 179g (2nd)",
+      "Air Flow at 200 bar": "1850 l/min"
+    }
+  },
+  {
+    id: "reg-5",
+    name: "REGULADOR MK25 EVO / A700",
+    description: "Garantía de un suministro de aire con bajo esfuerzo, sin importar la profundidad, o la temperatura. Este es el Regulador mas Galardonado por las publicaciones especializadas de buceo.",
+    price: 6437300,
+    category: "reguladores",
+    brand: "Scubapro",
+    image: "/images/regulador-mk25-evo-a700.png",
+    longDescription: "El MK25 EVO / A700 es la joya de la corona en reguladores metálicos. Combina la excepcional primera etapa MK25 EVO con la segunda etapa A700, fabricada enteramente en metal pulido. Esta segunda etapa metálica no solo es indestructible, sino que actúa como un excelente intercambiador de calor, condensando la humedad de la respiración para evitar la sequedad de la boca y eliminando por completo el riesgo de congelación. Es el regulador más galardonado de la historia y el preferido para buceo técnico y profesional.",
+    longDescriptionEn: "The MK25 EVO / A700 is the crown jewel of full-metal regulator systems. It pairs the stellar MK25 EVO first stage with the A700 second stage, constructed entirely from hand-polished metal. The full-metal casing is not only virtually indestructible but also acts as an excellent heat exchanger, condensing moisture from your breath to eliminate dry mouth and completely prevent freezing. It is the most awarded regulator in diving history, preferred by technical and professional divers.",
+    features: [
+      "Primera etapa de pistón compensado de flujo directo en latón cromado con torreta giratoria.",
+      "Extended Thermal Insulating System (XTIS) para protección térmica extrema.",
+      "Segunda etapa A700 fabricada 100% en metal pulido para una resistencia indestructible.",
+      "Carcasa metálica que actúa como intercambiador de calor previniendo la sequedad bucal.",
+      "Esfuerzo respiratorio extremadamente bajo en cualquier profundidad o presión.",
+      "Perilla de regulación de esfuerzo y palanca VIVA ajustables."
+    ],
+    featuresEn: [
+      "Balanced flow-through piston first stage with a 360-degree swivel turret.",
+      "Extended Thermal Insulating System (XTIS) for extreme cold-water protection.",
+      "A700 second stage crafted from 100% hand-polished metal for bulletproof durability.",
+      "Metal casing acts as a heat exchanger, condensing breath moisture to prevent dry mouth.",
+      "Extremely low inhalation effort at any depth or supply pressure.",
+      "Diver-adjustable breathing resistance knob and VIVA control."
+    ],
+    benefits: [
+      { "title": "Diseño 100% Metálico", "desc": "Carcasa de metal forjado indestructible con un acabado pulido a mano que resiste golpes y condiciones extremas." },
+      { "title": "Adiós a la Sequedad", "desc": "La tecnología de intercambio de calor del metal condensa la humedad del aire para una respiración más confortable." },
+      { "title": "El Más Galardonado", "desc": "Reconocido mundialmente por revistas y expertos de buceo por su flujo de aire perfecto y suavidad." }
+    ],
+    benefitsEn: [
+      { "title": "Full-Metal Durability", "desc": "Indestructible forged metal casing with a hand-polished finish that stands up to the harshest environments." },
+      { "title": "No More Dry Mouth", "desc": "The metal heat-exchanger technology condenses moisture from the air for a more comfortable breath." },
+      { "title": "Most Awarded System", "desc": "Globally recognized by diving magazines and technical experts for its flawless airflow and smoothness." }
+    ],
+    specs: {
+      "Tipo de Primera Etapa": "Pistón compensado de flujo directo",
+      "Cuerpo de la Primera Etapa": "Latón marino cromado con torreta giratoria 360°",
+      "Puertos HP": "2 opuestos",
+      "Puertos LP": "5 de alto flujo (LP High-Flow)",
+      "Tecnología Térmica": "XTIS (Aislamiento Térmico Avanzado)",
+      "Tipo de Segunda Etapa": "Neumáticamente compensada 100% Metálica",
+      "Controles": "Perilla de inhalación ajustable y palanca VIVA dive/pre-dive",
+      "Compatibilidad Nitrox": "Hasta 40%",
+      "Peso (DIN/INT)": "570g / 790g (1ra) + 265g (2da)",
+      "Flujo de Aire a 200 bar": "1850 l/min"
+    },
+    specsEn: {
+      "First Stage Type": "Balanced flow-through piston",
+      "First Stage Body": "Chrome-plated marine brass with 360° swivel turret",
+      "HP Ports": "2 opposite",
+      "LP Ports": "5 High-Flow",
+      "Thermal Technology": "XTIS (Advanced Thermal Insulation)",
+      "Second Stage Type": "Pneumatically balanced full-metal casing",
+      "Control Switch": "Adjustable inhalation effort and VIVA dive/pre-dive",
+      "Nitrox Compatibility": "Up to 40%",
+      "Weight (DIN/INT)": "570g / 790g (1st) + 265g (2nd)",
+      "Air Flow at 200 bar": "1850 l/min"
+    }
+  },
 
   // BCD (Chalecos)
   {

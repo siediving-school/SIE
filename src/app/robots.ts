@@ -13,10 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: [
-      `${SITE_URL}/sitemap.xml`,       // Unified sitemap with hreflang
-      `${SITE_URL}/sitemap-es.xml`,    // ES only → submit to GSC España/Colombia
-      `${SITE_URL}/sitemap-en.xml`,    // EN only → submit to GSC English markets
-    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

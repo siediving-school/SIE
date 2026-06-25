@@ -16,7 +16,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "DivingSchool",
+        "@type": ["LocalBusiness", "SportsActivityLocation"],
         "name": "SIE DIVING AND ADVENTURE",
         "url": "https://siediving.com",
         "logo": "https://siediving.com/logo-sie.png",

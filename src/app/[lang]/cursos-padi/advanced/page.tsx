@@ -82,6 +82,15 @@ const jsonLd = {
         },
       ],
     },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_URL}/es${PATH}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": `${SITE_URL}/es` },
+        { "@type": "ListItem", "position": 2, "name": "Cursos PADI", "item": `${SITE_URL}/es/cursos-padi` },
+        { "@type": "ListItem", "position": 3, "name": "PADI Advanced Open Water", "item": `${SITE_URL}/es${PATH}` },
+      ],
+    },
   ],
 };
 

@@ -1,10 +1,6 @@
-"use client";
-
-import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
-  MapPin, ChevronRight, ChevronLeft, Waves, Eye,
-  Thermometer, Fish, Star, Anchor, ArrowLeft
+  ChevronRight, Anchor, ArrowLeft
 } from "lucide-react";
 import styles from "./page.module.css";
 import { DESTINATIONS } from "../../../lib/destinations";
