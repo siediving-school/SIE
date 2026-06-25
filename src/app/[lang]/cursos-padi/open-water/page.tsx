@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { getDictionary, Locale } from "../../../../i18n";
 import styles from "./page.module.css";
 import { BookOpen, Waves, Users, Award, CheckCircle2, Clock, ChevronRight } from "lucide-react";
@@ -7,6 +8,82 @@ import { generateHreflang } from "../../layout";
 
 const SITE_URL = "https://siediving.com";
 const PATH = "/cursos-padi/open-water";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "@id": `${SITE_URL}/es${PATH}#course`,
+      "name": "PADI Open Water Diver",
+      "description": "Certifícate como buceador PADI Open Water en Taganga, Santa Marta. 3 pasos: teoría, aguas confinadas y 4 inmersiones en mar abierto. Válido de por vida para bucear hasta 18m.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/isla-aguja.png`,
+      "inLanguage": ["es", "en", "fr", "de", "zh", "ja"],
+      "timeRequired": "P3D",
+      "educationalLevel": "Beginner",
+      "teaches": [
+        "Principios y física del buceo",
+        "Uso y mantenimiento de equipo de buceo",
+        "Seguridad y planificación de inmersiones",
+        "Control de flotabilidad",
+        "4 inmersiones en mar abierto hasta 18m",
+      ],
+      "coursePrerequisites": "Saber nadar básico · Mínimo 10 años de edad · Buena salud general",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "Taganga, Santa Marta",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Taganga",
+            "addressRegion": "Magdalena",
+            "addressCountry": "CO",
+          },
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "COP",
+          "price": "890000",
+          "url": `${SITE_URL}/es${PATH}`,
+          "seller": { "@type": "Organization", "name": "SIE DIVING" },
+        },
+      },
+      "provider": {
+        "@type": "Organization",
+        "@id": `${SITE_URL}#business`,
+        "name": "SIE DIVING",
+        "url": SITE_URL,
+        "telephone": "+573017836467",
+      },
+      "educationalCredentialAwarded": "Certificación PADI Open Water Diver — reconocida mundialmente, válida de por vida",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/es${PATH}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Necesito experiencia previa para hacer el curso Open Water?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Solo necesitas saber nadar básico y tener mínimo 10 años. El curso está diseñado para personas sin ninguna experiencia previa en buceo." },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo dura el curso PADI Open Water en Taganga?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Entre 3 y 5 días según tu ritmo de aprendizaje. Incluye teoría, práctica en aguas confinadas y 4 inmersiones en mar abierto." },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué profundidad puedo bucear con la certificación Open Water?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Hasta 18 metros de profundidad acompañado de un compañero certificado. La certificación PADI Open Water Diver es válida de por vida en todo el mundo." },
+        },
+      ],
+    },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -47,6 +124,7 @@ export default async function OpenWaterPage({ params }: { params: Promise<{ lang
 
   return (
     <main className={styles.page}>
+      <Script id="ld-open-water" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ─── HERO ─── */}
       <section className={styles.hero}>
         <div className={styles.heroContainer}>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { getDictionary, Locale } from "../../../../i18n";
 import styles from "../open-water/page.module.css";
 import advStyles from "./advanced.module.css";
@@ -7,6 +8,82 @@ import { generateHreflang } from "../../layout";
 
 const SITE_URL = "https://siediving.com";
 const PATH = "/cursos-padi/advanced";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "@id": `${SITE_URL}/es${PATH}#course`,
+      "name": "PADI Advanced Open Water Diver",
+      "description": "Lleva tu buceo al siguiente nivel con PADI Advanced en Taganga. 5 inmersiones de aventura: navegación subacuática y buceo profundo obligatorias, más 3 especialidades a elegir. Sin examen final.",
+      "url": `${SITE_URL}/es${PATH}`,
+      "image": `${SITE_URL}/images/isla-aguja.png`,
+      "inLanguage": ["es", "en", "fr", "de", "zh", "ja"],
+      "timeRequired": "P2D",
+      "educationalLevel": "Intermediate",
+      "teaches": [
+        "Navegación subacuática con brújula",
+        "Buceo profundo hasta 30m",
+        "Buceo nocturno",
+        "Identificación de vida marina",
+        "Fotografía subacuática",
+        "Flotabilidad avanzada",
+      ],
+      "coursePrerequisites": "Certificación PADI Open Water Diver (o equivalente) · Mínimo 15 años de edad",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "name": "Taganga, Santa Marta",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Taganga",
+            "addressRegion": "Magdalena",
+            "addressCountry": "CO",
+          },
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "COP",
+          "url": `${SITE_URL}/es${PATH}`,
+          "seller": { "@type": "Organization", "name": "SIE DIVING" },
+        },
+      },
+      "provider": {
+        "@type": "Organization",
+        "@id": `${SITE_URL}#business`,
+        "name": "SIE DIVING",
+        "url": SITE_URL,
+        "telephone": "+573017836467",
+      },
+      "educationalCredentialAwarded": "Certificación PADI Advanced Open Water Diver — habilita buceo hasta 30m y cuenta hacia especialidades PADI",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/es${PATH}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué necesito para hacer el curso PADI Advanced Open Water?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Necesitas la certificación PADI Open Water Diver (o equivalente de otra agencia) y tener mínimo 15 años. No hay examen final escrito." },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuántas inmersiones incluye el Advanced Open Water?",
+          "acceptedAnswer": { "@type": "Answer", "text": "5 inmersiones de aventura en total: 2 obligatorias (navegación y profundidad) y 3 electivas que tú eliges entre nocturna, identificación de peces, fotografía subacuática y más." },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las inmersiones del Advanced cuentan para especialidades PADI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí. Cada inmersión de aventura puede contar como la primera inmersión del curso de especialidad correspondiente, adelantando tu camino hacia la siguiente certificación." },
+        },
+      ],
+    },
+  ],
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -47,6 +124,7 @@ export default async function AdvancedPage({ params }: { params: Promise<{ lang:
 
   return (
     <main className={styles.page}>
+      <Script id="ld-advanced" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ─── HERO ─── */}
       <section className={`${styles.hero} ${advStyles.hero}`}>
         <div className={styles.heroBadge}>PADI Advanced Open Water Diver</div>
