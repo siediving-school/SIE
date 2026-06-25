@@ -1,9 +1,40 @@
+import type { Metadata } from "next";
 import styles from "../providencia/dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
 import { MapPin, Thermometer, Eye, ChevronRight, Star, Anchor, CheckCircle2, Waves, Clock, Fish, ShieldAlert, Navigation } from "lucide-react";
 import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
 import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
+import { generateHreflang } from "../../layout";
+
+const SITE_URL = "https://siediving.com";
+const PATH = "/destinos/malpelo";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const isEs = lang === "es";
+  return {
+    title: isEs
+      ? "Expedición Buceo Malpelo, Colombia | Vida a Bordo · SIE DIVING"
+      : "Malpelo Diving Expedition, Colombia | Liveaboard · SIE DIVING",
+    description: isEs
+      ? "Expedición vida a bordo en Malpelo. Tiburones martillo en cardúmenes de cientos, tiburón monstruo y pelágicos del Pacífico. Requiere Advanced OWD + 50 inmersiones + Nitrox."
+      : "Malpelo liveaboard expedition. Hammerhead sharks in schools of hundreds, whale shark and Pacific pelagics. Requires Advanced OWD + 50 dives + Nitrox.",
+    alternates: {
+      canonical: `${SITE_URL}/${lang}${PATH}`,
+      languages: generateHreflang(PATH),
+    },
+    openGraph: {
+      title: isEs ? "Buceo Malpelo · SIE DIVING" : "Malpelo Diving · SIE DIVING",
+      description: isEs
+        ? "La roca viviente del Pacífico. Tiburones martillo, galápagos y una biodiversidad que no existe en ningún otro lugar."
+        : "The living rock of the Pacific. Hammerhead sharks, Galapagos sharks and biodiversity found nowhere else.",
+      url: `${SITE_URL}/${lang}${PATH}`,
+      images: [{ url: `${SITE_URL}/images/img-239db711.jpg`, width: 1200, height: 630, alt: "Buceo en Malpelo Colombia tiburones martillo" }],
+      type: "website",
+    },
+  };
+}
 
 const WHATSAPP = "573017836467";
 const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero info sobre la expedición vida a bordo en Malpelo 🦈")}`;

@@ -1,7 +1,38 @@
+import type { Metadata } from "next";
 import { getDictionary, Locale } from "../../../../i18n";
 import styles from "../open-water/page.module.css";
 import advStyles from "./advanced.module.css";
 import { Compass, Waves, Users, Award, CheckCircle2, Anchor, Moon, Eye, Fish, ChevronRight } from "lucide-react";
+import { generateHreflang } from "../../layout";
+
+const SITE_URL = "https://siediving.com";
+const PATH = "/cursos-padi/advanced";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const isEs = lang === "es";
+  return {
+    title: isEs
+      ? "Curso PADI Advanced Open Water en Taganga, Colombia · SIE DIVING"
+      : "PADI Advanced Open Water Course in Taganga, Colombia · SIE DIVING",
+    description: isEs
+      ? "Lleva tu buceo al siguiente nivel con PADI Advanced en Taganga. Navegación subacuática, buceo profundo a 30m, nocturno y 2 especialidades a elegir. Grupos máximo 6 personas."
+      : "Take your diving to the next level with PADI Advanced in Taganga. Underwater navigation, deep diving to 30m, night diving and 2 elective specialties. Max 6 people per group.",
+    alternates: {
+      canonical: `${SITE_URL}/${lang}${PATH}`,
+      languages: generateHreflang(PATH),
+    },
+    openGraph: {
+      title: isEs ? "PADI Advanced Taganga · SIE DIVING" : "PADI Advanced Taganga · SIE DIVING",
+      description: isEs
+        ? "Profundidad, navegación, nocturno y especialidades. El Advanced es el paso que convierte al buceador en explorador."
+        : "Depth, navigation, night diving and specialties. The Advanced course turns a diver into an explorer.",
+      url: `${SITE_URL}/${lang}${PATH}`,
+      images: [{ url: `${SITE_URL}/images/isla-aguja.png`, width: 1200, height: 630, alt: "Curso PADI Advanced Open Water Taganga Colombia" }],
+      type: "website",
+    },
+  };
+}
 
 export default async function AdvancedPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

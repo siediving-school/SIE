@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import styles from "./dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
@@ -7,6 +8,36 @@ import {
 } from "lucide-react";
 import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
 import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
+import { generateHreflang } from "../../layout";
+
+const SITE_URL = "https://siediving.com";
+const PATH = "/destinos/santa-marta";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const isEs = lang === "es";
+  return {
+    title: isEs
+      ? "Buceo en Santa Marta y Taganga, Colombia · SIE DIVING"
+      : "Scuba Diving Santa Marta & Taganga, Colombia · SIE DIVING",
+    description: isEs
+      ? "Certifícate con PADI en Taganga o haz inmersiones avanzadas en corales del Parque Tayrona. Grupos pequeños, salidas diarias y gastronomía caribeña."
+      : "Get PADI certified in Taganga or do advanced dives on Tayrona Park corals. Small groups, daily departures and Caribbean gastronomy.",
+    alternates: {
+      canonical: `${SITE_URL}/${lang}${PATH}`,
+      languages: generateHreflang(PATH),
+    },
+    openGraph: {
+      title: isEs ? "Buceo Santa Marta · SIE DIVING" : "Diving Santa Marta · SIE DIVING",
+      description: isEs
+        ? "El Caribe más biodiverso de Colombia. Arrecifes, corales y la mejor gastronomía de la costa."
+        : "Colombia's most biodiverse Caribbean. Reefs, corals and the best coastal gastronomy.",
+      url: `${SITE_URL}/${lang}${PATH}`,
+      images: [{ url: `${SITE_URL}/Morena.jpg`, width: 1200, height: 630, alt: "Buceo en Taganga Santa Marta Colombia" }],
+      type: "website",
+    },
+  };
+}
 
 const WHATSAPP = "573017836467";
 const WA_MSG_ES = encodeURIComponent("Hola, quiero más información sobre el destino Santa Marta / Taganga 🌊");

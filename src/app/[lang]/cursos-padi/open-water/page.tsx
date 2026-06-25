@@ -1,8 +1,38 @@
+import type { Metadata } from "next";
 import { getDictionary, Locale } from "../../../../i18n";
 import styles from "./page.module.css";
 import { BookOpen, Waves, Users, Award, CheckCircle2, Clock, ChevronRight } from "lucide-react";
-
 import Image from "next/image";
+import { generateHreflang } from "../../layout";
+
+const SITE_URL = "https://siediving.com";
+const PATH = "/cursos-padi/open-water";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const isEs = lang === "es";
+  return {
+    title: isEs
+      ? "Curso PADI Open Water en Taganga, Colombia · SIE DIVING"
+      : "PADI Open Water Course in Taganga, Colombia · SIE DIVING",
+    description: isEs
+      ? "Certifícate como buceador PADI Open Water en Taganga, Santa Marta. 3 días, grupos pequeños, instructor certificado y arrecifes de coral a minutos en lancha. Desde $890.000 COP."
+      : "Get PADI Open Water certified in Taganga, Santa Marta. 3 days, small groups, certified instructor and coral reefs minutes away by boat.",
+    alternates: {
+      canonical: `${SITE_URL}/${lang}${PATH}`,
+      languages: generateHreflang(PATH),
+    },
+    openGraph: {
+      title: isEs ? "PADI Open Water Taganga · SIE DIVING" : "PADI Open Water Taganga · SIE DIVING",
+      description: isEs
+        ? "El curso de buceo más reconocido del mundo, en el Caribe colombiano. 3 pasos: teoría, piscina y mar abierto."
+        : "The world's most recognized diving course, on the Colombian Caribbean. 3 steps: theory, pool and open water.",
+      url: `${SITE_URL}/${lang}${PATH}`,
+      images: [{ url: `${SITE_URL}/images/isla-aguja.png`, width: 1200, height: 630, alt: "Curso PADI Open Water Taganga Colombia" }],
+      type: "website",
+    },
+  };
+}
 
 export default async function OpenWaterPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

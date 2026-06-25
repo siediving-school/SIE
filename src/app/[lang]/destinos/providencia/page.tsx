@@ -1,9 +1,40 @@
+import type { Metadata } from "next";
 import styles from "./dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
 import { MapPin, Thermometer, Eye, ChevronRight, Star, Anchor, Utensils, CheckCircle2, Waves, Clock, Fish } from "lucide-react";
 import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
 import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
+import { generateHreflang } from "../../layout";
+
+const SITE_URL = "https://siediving.com";
+const PATH = "/destinos/providencia";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const isEs = lang === "es";
+  return {
+    title: isEs
+      ? "Buceo en Providencia, Colombia | Reserva UNESCO · SIE DIVING"
+      : "Diving in Providencia, Colombia | UNESCO Reserve · SIE DIVING",
+    description: isEs
+      ? "Tercera barrera de arrecife más grande del mundo. Reserva de Biosfera UNESCO con 850+ especies marinas. Paquetes 3-4 días con hospedaje, inmersiones y gastronomía raizal."
+      : "Third largest barrier reef in the world. UNESCO Biosphere Reserve with 850+ marine species. 3-4 day packages with accommodation, dives and raizal gastronomy.",
+    alternates: {
+      canonical: `${SITE_URL}/${lang}${PATH}`,
+      languages: generateHreflang(PATH),
+    },
+    openGraph: {
+      title: isEs ? "Buceo en Providencia · SIE DIVING" : "Diving in Providencia · SIE DIVING",
+      description: isEs
+        ? "El arrecife de barrera más espectacular del Caribe. Tiburones nodriza, mantas raya y cocina raizal única."
+        : "The Caribbean's most spectacular barrier reef. Nurse sharks, manta rays and unique raizal cuisine.",
+      url: `${SITE_URL}/${lang}${PATH}`,
+      images: [{ url: `${SITE_URL}/images/img-04e5f555.jpg`, width: 1200, height: 630, alt: "Buceo en Providencia Colombia" }],
+      type: "website",
+    },
+  };
+}
 
 const WHATSAPP = "573017836467";
 const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero info sobre bucear en Providencia 🐠")}`;
