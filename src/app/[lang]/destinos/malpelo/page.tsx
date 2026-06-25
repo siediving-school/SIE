@@ -2,10 +2,45 @@ import styles from "../providencia/dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
 import { MapPin, Thermometer, Eye, ChevronRight, Star, Anchor, CheckCircle2, Waves, Clock, Fish, ShieldAlert, Navigation } from "lucide-react";
+import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
+import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
 
 const WHATSAPP = "573017836467";
 const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero info sobre la expedición vida a bordo en Malpelo 🦈")}`;
 const WA_EN = `https://wa.me/573017836467?text=${encodeURIComponent("Hi, info about the Malpelo liveaboard expedition please 🦈")}`;
+
+const TESTIMONIALS: Testimonial[] = [
+  { text: "Malpelo es el buceo más impresionante de mi vida. Cientos de tiburones martillo en La Nevera — es imposible describirlo con palabras.", name: "Pablo S.", country: "🇨🇴", trip: "Liveaboard · Malpelo", avatar: "/images/avatar-tomas.jpg" },
+  { text: "El tiburón monstruo en El Altar de Virginia fue un momento que nunca olvidaré. SIE conoce estos mares como nadie.", name: "Ingrid B.", country: "🇸🇪", trip: "Advanced · Malpelo", avatar: "/images/avatar-sophie.jpg" },
+  { text: "Solo para buzos serios — corrientes, profundidad y vida salvaje. Exactamente lo que buscaba. 10/10.", name: "Felipe A.", country: "🇲🇽", trip: "Expedición · Malpelo", avatar: "/images/avatar-mariana.jpg" },
+];
+
+const PROFILES: Profile[] = [
+  {
+    img: "/images/isla-fuerte-perfil-avanzado.jpg",
+    emoji: "🦈",
+    titleEs: "El buceador experto",
+    titleEn: "The expert diver",
+    descEs: "Advanced Open Water, 50+ inmersiones y Nitrox son obligatorios. Malpelo está diseñado para quien ya domina el agua y quiere el encuentro más épico con la vida marina.",
+    descEn: "Advanced Open Water, 50+ dives and Nitrox are mandatory. Malpelo is designed for those who already master the water and want the most epic encounter with marine life.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-desconectarse.jpg",
+    emoji: "🌊",
+    titleEs: "El que busca el límite de la experiencia",
+    titleEn: "The one seeking the ultimate experience",
+    descEs: "Tiburones martillo en cardúmenes, pelágicos gigantes, corrientes del Pacífico. Malpelo no es un destino — es un rito de paso para el buceador serio.",
+    descEn: "Hammerhead sharks in schools, giant pelagics, Pacific currents. Malpelo is not a destination — it's a rite of passage for the serious diver.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-certificarse.jpg",
+    emoji: "⚓",
+    titleEs: "El liveaboard exclusivo",
+    titleEn: "The exclusive liveaboard",
+    descEs: "Máximo 16 buzos por barco, días en el mar abierto y 4 inmersiones diarias en uno de los sitios más remotos del planeta.",
+    descEn: "Maximum 16 divers per boat, days on the open sea and 4 daily dives at one of the most remote sites on the planet.",
+  },
+];
 
 const DIVE_SPOTS = [
   { name: "La Nevera", depth: "15–35m", level: "Avanzado", desc: "Estación de limpieza principal. Aquí se congregan cientos de tiburones martillo y galápagos para ser desparasitados." },
@@ -128,6 +163,9 @@ export default async function MalpeloPage({ params }: { params: Promise<{ lang: 
           </div>
         </div>
       </section>
+
+      <ProfilesSection profiles={PROFILES} isEs={isEs} waLink={WA} />
+      <TestimonialsSection testimonials={TESTIMONIALS} isEs={isEs} />
 
       <section className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.container}>

@@ -96,7 +96,7 @@ export default async function TiendaCategoriaPage({ params }: { params: Promise<
         {categoryProducts.length > 0 ? (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "2rem" }}>
             {categoryProducts.map(product => (
-              <ProductCard key={product.id} product={product} isEs={isEs} />
+              <ProductCard key={product.id} product={product} isEs={isEs} lang={lang} />
             ))}
           </div>
         ) : (

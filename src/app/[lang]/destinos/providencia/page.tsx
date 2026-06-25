@@ -2,15 +2,50 @@ import styles from "./dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
 import { MapPin, Thermometer, Eye, ChevronRight, Star, Anchor, Utensils, CheckCircle2, Waves, Clock, Fish } from "lucide-react";
+import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
+import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
 
 const WHATSAPP = "573017836467";
 const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero info sobre bucear en Providencia 🐠")}`;
 const WA_EN = `https://wa.me/573017836467?text=${encodeURIComponent("Hi, info about diving in Providencia please 🐠")}`;
 
+const TESTIMONIALS: Testimonial[] = [
+  { text: "Providencia fue lo más impresionante que he buceado. Los tiburones nodriza y las mantas raya en el mismo día. Increíble.", name: "Andrés M.", country: "🇨🇴", trip: "Avanzado · Providencia", avatar: "/images/avatar-tomas.jpg" },
+  { text: "La cultura raizal, el rondón y el arrecife — es un destino único en el mundo. SIE lo organizó todo perfecto.", name: "Claire D.", country: "🇫🇷", trip: "Intermedio · Providencia", avatar: "/images/avatar-sophie.jpg" },
+  { text: "Nunca había visto tanta vida marina. Shark Dive fue épico. Vuelvo el año que viene sin duda.", name: "Juliana P.", country: "🇧🇷", trip: "Open Water · Providencia", avatar: "/images/avatar-mariana.jpg" },
+];
+
+const PROFILES: Profile[] = [
+  {
+    img: "/images/isla-fuerte-perfil-avanzado.jpg",
+    emoji: "🦈",
+    titleEs: "El buceador avanzado",
+    titleEn: "The advanced diver",
+    descEs: "Tiburones nodriza, mantas raya, paredes coralinas a 30m y buceo nocturno. Providencia te exige experiencia y te recompensa con algo que muy pocos han visto.",
+    descEn: "Nurse sharks, manta rays, coral walls at 30m and night diving. Providencia demands experience and rewards you with something very few have seen.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-desconectarse.jpg",
+    emoji: "🌺",
+    titleEs: "El que busca cultura y naturaleza",
+    titleEn: "The culture & nature seeker",
+    descEs: "UNESCO, rondón raizal, Old Providence. La isla tiene personalidad propia — no es solo buceo, es una experiencia cultural que te cambia.",
+    descEn: "UNESCO, raizal rondón, Old Providence. The island has its own personality — it's not just diving, it's a cultural experience that changes you.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-certificarse.jpg",
+    emoji: "🤿",
+    titleEs: "El que quiere su primer gran viaje de buceo",
+    titleEn: "The one who wants their first big dive trip",
+    descEs: "Si ya tienes Open Water y quieres tu primer destino de ensueño, Providencia es el lugar. Aguas cálidas, vida marina increíble y guías expertos.",
+    descEn: "If you already have Open Water and want your first dream destination, Providencia is the place. Warm waters, incredible marine life and expert guides.",
+  },
+];
+
 const DIVE_SPOTS = [
   { name: "Third Encounter", depth: "10–30m", level: "Intermedio", desc: "Paredes verticales de coral y cardúmenes masivos de barracudas. Uno de los 10 mejores del Caribe." },
   { name: "Manta's Place", depth: "8–20m", level: "Principiante", desc: "Zona de encuentro con mantas raya y tiburones nodriza que descansan en el fondo arenoso." },
-  { name: "Shark Dive", depth: "15–25m", level: "Intermedio", desc: "Inmersión guiada con tiburones de punta negra en su entorno natural. 100% segura." },
+  { name: "Shark Dive", depth: "15–25m", level: "Intermedio", desc: "Inmersión guiada con tiburones grises de arrecife en su entorno natural. 100% segura." },
 ];
 
 const GASTRO = [
@@ -69,6 +104,7 @@ export default async function ProvidenciaPage({ params }: { params: Promise<{ la
               style={{ width: "100%", height: "100%", borderRadius: "20px" }}
             ></iframe>
           </div>
+          <h2 className={styles.subSectionTitle}>{isEs ? "Sitios de Buceo" : "Dive Sites"}</h2>
           <div className={styles.spotsGrid}>
             {DIVE_SPOTS.map((s, i) => (
               <div key={i} className={styles.spotCard}>
@@ -81,6 +117,7 @@ export default async function ProvidenciaPage({ params }: { params: Promise<{ la
               </div>
             ))}
           </div>
+          <h2 className={styles.subSectionTitle}>{isEs ? "El Plan Incluye" : "What's Included"}</h2>
           <div className={styles.infoBoxRow}>
             {[
               { icon: <CheckCircle2 size={18} className={styles.infoIcon} />, title: isEs ? "Hospedaje + Buceo incluido" : "Accommodation + Diving included", desc: isEs ? "Alojamiento en acomodación múltiple e inmersiones coordinadas en un solo paquete (Incluye Desayuno)." : "Multiple accommodation and coordinated dives in one package (Breakfast included)." },
@@ -114,6 +151,9 @@ export default async function ProvidenciaPage({ params }: { params: Promise<{ la
           </div>
         </div>
       </section>
+
+      <ProfilesSection profiles={PROFILES} isEs={isEs} waLink={WA} />
+      <TestimonialsSection testimonials={TESTIMONIALS} isEs={isEs} />
 
       <section className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.container}>

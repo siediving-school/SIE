@@ -5,10 +5,45 @@ import {
   MapPin, Thermometer, Eye, ChevronRight, Star,
   Anchor, Utensils, CheckCircle2, Waves, Clock, Fish
 } from "lucide-react";
+import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
+import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
 
 const WHATSAPP = "573017836467";
 const WA_MSG_ES = encodeURIComponent("Hola, quiero más información sobre el destino Santa Marta / Taganga 🌊");
 const WA_MSG_EN = encodeURIComponent("Hi, I want more info about the Santa Marta / Taganga destination 🌊");
+
+const TESTIMONIALS: Testimonial[] = [
+  { text: "Me certifiqué con SIE en Taganga y fue la mejor decisión. El instructor tuvo paciencia infinita y el arrecife es hermoso.", name: "Laura G.", country: "🇨🇴", trip: "Open Water · Taganga", avatar: "/images/avatar-mariana.jpg" },
+  { text: "Dos inmersiones cada mañana y luego a disfrutar el Caribe. Taganga tiene todo — buceo, playa y comida increíble.", name: "Mike T.", country: "🇬🇧", trip: "Fun Dives · Santa Marta", avatar: "/images/avatar-tomas.jpg" },
+  { text: "El patacón con ceviche después de bucear es un must. SIE conoce los mejores spots y los mejores restaurantes.", name: "Valentina R.", country: "🇦🇷", trip: "Advanced · Taganga", avatar: "/images/avatar-sophie.jpg" },
+];
+
+const PROFILES: Profile[] = [
+  {
+    img: "/images/isla-fuerte-perfil-certificarse.jpg",
+    emoji: "🤿",
+    titleEs: "El que quiere certificarse",
+    titleEn: "The one who wants to get certified",
+    descEs: "Taganga es el lugar más popular de Colombia para hacer Open Water. Aguas tranquilas, arrecife cercano y un centro PADI con años de experiencia.",
+    descEn: "Taganga is Colombia's most popular place to do Open Water. Calm waters, nearby reef and a PADI center with years of experience.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-desconectarse.jpg",
+    emoji: "🌊",
+    titleEs: "El viajero que quiere todo en uno",
+    titleEn: "The traveler who wants it all",
+    descEs: "Santa Marta tiene Tayrona, Taganga, el Caribe y la Sierra Nevada. Buceas en la mañana, exploras en la tarde. Un destino completo.",
+    descEn: "Santa Marta has Tayrona, Taganga, the Caribbean and the Sierra Nevada. Dive in the morning, explore in the afternoon. A complete destination.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-avanzado.jpg",
+    emoji: "🐟",
+    titleEs: "El buceador con experiencia",
+    titleEn: "The experienced diver",
+    descEs: "Los Cañones a 30m con rayas águila y morenas, La Aguja con sus paredes de gorgonias. Taganga tiene sitios que todavía sorprenden a los avanzados.",
+    descEn: "Los Cañones at 30m with eagle rays and morays, La Aguja with its gorgonian walls. Taganga has sites that still surprise advanced divers.",
+  },
+];
 
 const DIVE_SPOTS = [
   { name: "El Morro", depth: "5–18m", level: "Principiante", desc: "Arrecife de coral vibrante con tortugas carey y bancos de peces tropicales." },
@@ -134,6 +169,9 @@ export default async function SantaMartaPage({ params }: { params: Promise<{ lan
           </div>
         </div>
       </section>
+
+      <ProfilesSection profiles={PROFILES} isEs={isEs} waLink={WA} />
+      <TestimonialsSection testimonials={TESTIMONIALS} isEs={isEs} />
 
       {/* ── MORE DESTINATIONS ── */}
       <section className={`${styles.section} ${styles.sectionDark}`}>

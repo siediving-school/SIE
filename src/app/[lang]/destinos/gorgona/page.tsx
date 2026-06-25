@@ -3,6 +3,8 @@ import styles from "../providencia/dest.module.css";
 import Link from "next/link";
 import { getDictionary, Locale } from "../../../../i18n";
 import { generateHreflang } from "../../layout";
+import TestimonialsSection, { type Testimonial } from "../../../../components/TestimonialsSection";
+import ProfilesSection, { type Profile } from "../../../../components/ProfilesSection";
 import {
   MapPin, Thermometer, Eye, ChevronRight, Anchor,
   CheckCircle2, Waves, Clock, Fish, Navigation, Leaf,
@@ -33,6 +35,39 @@ export async function generateMetadata(
 
 const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero información sobre la expedición vida a bordo en Gorgona — Agosto 2026 🐳")}`;
 const WA_EN = `https://wa.me/573017836467?text=${encodeURIComponent("Hi, info about the Gorgona liveaboard expedition August 2026 please 🐳")}`;
+
+const TESTIMONIALS: Testimonial[] = [
+  { text: "Ver ballenas jorobadas desde el barco al amanecer y luego bucear con tiburones martillo fue un sueño hecho realidad.", name: "Carlos V.", country: "🇨🇴", trip: "Liveaboard · Gorgona 2025", avatar: "/images/avatar-tomas.jpg" },
+  { text: "Gorgona es de otro planeta. La biodiversidad del Pacífico no tiene comparación. SIE organizó todo impecablemente.", name: "Lena M.", country: "🇩🇪", trip: "Advanced · Gorgona", avatar: "/images/avatar-sophie.jpg" },
+  { text: "El avistamiento de ballenas desde el barco mientras el sol salía sobre el Pacífico — eso no se olvida.", name: "Ricardo O.", country: "🇨🇴", trip: "Expedición · Gorgona 2024", avatar: "/images/avatar-mariana.jpg" },
+];
+
+const PROFILES: Profile[] = [
+  {
+    img: "/images/isla-fuerte-perfil-avanzado.jpg",
+    emoji: "🦈",
+    titleEs: "El buceador avanzado que quiere más",
+    titleEn: "The advanced diver who wants more",
+    descEs: "Tiburones martillo en cardúmenes de cientos, tortugas, pelágicos y aguas del Pacífico profundo. Gorgona no es para principiantes — es para los que ya tienen historia bajo el agua.",
+    descEn: "Hammerhead sharks in schools of hundreds, turtles, pelagics and deep Pacific waters. Gorgona is not for beginners — it's for those who already have a story underwater.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-desconectarse.jpg",
+    emoji: "🐳",
+    titleEs: "El amante de la naturaleza extrema",
+    titleEn: "The extreme nature lover",
+    descEs: "Ballenas jorobadas en agosto, delfines, tiburones ballena de paso. En Gorgona la naturaleza es el espectáculo — tanto en la superficie como debajo.",
+    descEn: "Humpback whales in August, dolphins, passing whale sharks. In Gorgona nature is the spectacle — both above and below the surface.",
+  },
+  {
+    img: "/images/isla-fuerte-perfil-certificarse.jpg",
+    emoji: "⚓",
+    titleEs: "El que sueña con un liveaboard",
+    titleEn: "The one who dreams of a liveaboard",
+    descEs: "Dormir en el barco, amanecer en el mar y bucear 4 veces al día. La expedición Gorgona en el SeaWolf es tu primer liveaboard soñado.",
+    descEn: "Sleep on the boat, wake up at sea and dive 4 times a day. The Gorgona expedition on the SeaWolf is your dream first liveaboard.",
+  },
+];
 
 const DIVE_SPOTS = [
   {
@@ -347,6 +382,9 @@ export default async function GorgonaPage({
           </div>
         </div>
       </section>
+
+      <ProfilesSection profiles={PROFILES} isEs={isEs} waLink={WA} />
+      <TestimonialsSection testimonials={TESTIMONIALS} isEs={isEs} />
 
       {/* ── MÁS DESTINOS ── */}
       <section className={`${styles.section} ${styles.sectionDark}`}>

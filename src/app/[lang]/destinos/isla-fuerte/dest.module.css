@@ -191,6 +191,18 @@
   margin-bottom: 1rem;
 }
 
+.subSectionTitle {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: #48cae4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+  margin-top: 2.5rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid #48cae4;
+}
+
 .sectionDesc {
   color: rgba(255,255,255,0.5);
   max-width: 560px;
@@ -281,7 +293,8 @@
 
 .level_principiante { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
 .level_intermedio   { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
-.level_advanced     { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.level_advanced,
+.level_avanzado     { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
 
 .spotDepth {
   display: flex;
@@ -544,6 +557,167 @@
   margin-bottom: 2rem;
 }
 
+/* ── URGENCY BADGE ── */
+.urgencyBadge {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: #fbbf24;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 0.4rem 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── PROFILES ── */
+.profilesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.profileCard {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.profileCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.profileCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4,10,28,0.95) 0%, rgba(4,10,28,0.4) 60%, transparent 100%);
+}
+
+.profileCardContent {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profileEmoji { font-size: 1.8rem; }
+
+.profileTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.profileDesc {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+
+.profileCta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #48cae4;
+  text-decoration: none;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
+.profileCta:hover { text-decoration: underline; }
+
+/* ── TESTIMONIALS ── */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonialCard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.testimonialText {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonialAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(72, 202, 228, 0.4);
+}
+
+.testimonialAuthor strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #fff;
+}
+
+.testimonialTrip {
+  display: block;
+  font-size: 0.75rem;
+  color: #48cae4;
+  margin-top: 0.1rem;
+}
+
+/* ── FAQ ── */
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.faqItem {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.faqQ {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.faqA {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .section { padding: 4rem 1.25rem; }
@@ -553,4 +727,7 @@
   .packageImg1 { height: 220px; }
   .packageImg2 { height: 160px; }
   .diveImgWrap { height: 240px; }
+  .profilesGrid { grid-template-columns: 1fr; }
+  .testimonialsGrid { grid-template-columns: 1fr; }
+  .faqList { grid-template-columns: 1fr; }
 }
