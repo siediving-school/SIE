@@ -5,26 +5,26 @@
 
 .item {
   border-bottom: 1px solid rgba(255,255,255,0.07);
-  overflow: hidden;
 }
 
 .item:first-child {
   border-top: 1px solid rgba(255,255,255,0.07);
 }
 
+/* Oculta el triángulo nativo del browser */
 .question {
+  list-style: none;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1.4rem 0;
-  background: none;
-  border: none;
   cursor: pointer;
-  text-align: left;
   color: #fff;
   font-family: inherit;
 }
+
+.question::-webkit-details-marker { display: none; }
 
 .question:hover .qText {
   color: #48cae4;
@@ -48,25 +48,27 @@
   line-height: 1.4;
 }
 
+/* Flecha CSS pura — sin JS */
 .chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #48cae4;
   font-size: 1.4rem;
   font-weight: 300;
-  color: #48cae4;
-  flex-shrink: 0;
   line-height: 1;
-  width: 20px;
-  text-align: center;
+}
+
+.chevron::after {
+  content: "+";
   transition: transform 0.25s;
 }
 
-.answerWrap {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-
-.itemOpen .answerWrap {
-  max-height: 200px;
+.item[open] .chevron::after {
+  content: "−";
 }
 
 .answer {

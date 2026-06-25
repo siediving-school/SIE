@@ -83,6 +83,44 @@ const jsonLd = {
         "addressCountry": "CO",
       },
     },
+    {
+      "@type": "FAQPage",
+      "@id": "https://siediving.com/es/destinos/isla-fuerte#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Necesito saber nadar para bucear en Isla Fuerte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, necesitas saber nadar básico — no tiene que ser perfecto. Si tienes dudas cuéntanos y te evaluamos. Para snorkel con chaleco no es necesario.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo ir a Isla Fuerte sin certificación de buceo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Con el curso Open Water te certificas en el mismo viaje. O puedes hacer un Bautizo de Buceo (Discover Scuba) sin certificación previa, para una inmersión guiada.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye exactamente el paquete de buceo en Isla Fuerte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Transporte marítimo ida y vuelta, hospedaje en posada con desayuno, 4 inmersiones con equipo completo, guía certificado y cena de langosta del día.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hay WiFi en Isla Fuerte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Señal limitada. Algunos hostales tienen WiFi básico. Considera que esto es parte de la experiencia — desconectarte es el plan.",
+          },
+        },
+      ],
+    },
   ],
 };
 
