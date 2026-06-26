@@ -23,8 +23,8 @@ export async function generateMetadata(
       ? "Gorgona: Expedición Vida a Bordo | Ballenas y Buceo en el Pacífico · SIE DIVING"
       : "Gorgona Liveaboard Expedition | Whales & Diving in the Pacific · SIE DIVING",
     description: lang === "es"
-      ? "Expedición vida a bordo en Gorgona, Agosto 2026. Barco SeaWolf. Ballenas jorobadas, tiburones y corales del Pacífico colombiano. Reserva Natural Nacional."
-      : "Liveaboard expedition to Gorgona, August 2026. SeaWolf vessel. Humpback whales, sharks and Pacific corals. Colombian National Natural Reserve.",
+      ? "Expedición vida a bordo en Gorgona. Barco SeaWolf. Ballenas jorobadas, tiburones y corales del Pacífico colombiano. Reserva Natural Nacional."
+      : "Liveaboard expedition to Gorgona. SeaWolf vessel. Humpback whales, sharks and Pacific corals. Colombian National Natural Reserve.",
     alternates: {
       canonical: `${SITE_URL}/${lang}${PATH}`,
       languages: generateHreflang(PATH),
@@ -33,8 +33,8 @@ export async function generateMetadata(
 }
 
 
-const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero información sobre la expedición vida a bordo en Gorgona — Agosto 2026 🐳")}`;
-const WA_EN = `https://wa.me/573017836467?text=${encodeURIComponent("Hi, info about the Gorgona liveaboard expedition August 2026 please 🐳")}`;
+const WA_ES = `https://wa.me/573017836467?text=${encodeURIComponent("Hola, quiero información sobre la expedición vida a bordo en Gorgona 🐳")}`;
+const WA_EN = `https://wa.me/573017836467?text=${encodeURIComponent("Hi, info about the Gorgona liveaboard expedition please 🐳")}`;
 
 const TESTIMONIALS: Testimonial[] = [
   { text: "Ver ballenas jorobadas desde el barco al amanecer y luego bucear con tiburones martillo fue un sueño hecho realidad.", name: "Carlos V.", country: "🇨🇴", trip: "Liveaboard · Gorgona 2025", avatar: "/images/avatar-tomas.jpg" },
@@ -96,40 +96,7 @@ const DIVE_SPOTS = [
   },
 ];
 
-const ITINERARIO = [
-  {
-    dia: "Día 1 — 11 Agosto",
-    desc: "Llegada a Cali (recomendada en la mañana). 12:00 pm encuentro en instalaciones Mar Antiguo, Cali. 3:00 pm salida en transporte privado al puerto de Buenaventura. 7:00 pm embarque en el SeaWolf y briefing de bienvenida. 8:00 pm cena y zarpe hacia Isla Gorgona.",
-    icon: "🚐",
-  },
-  {
-    dia: "Días 2 y 3 — 12 y 13 Agosto",
-    desc: "Jornadas completas de buceo en Gorgona: 6 buceos diurnos y posibilidad de 2 nocturnos. Visita a sitios como La Tiburonera, La Catedral, El Planchón. Avistamiento de ballenas jorobadas en migración desde la Antártida.",
-    icon: "🤿",
-  },
-  {
-    dia: "Día 4 — 14 Agosto",
-    desc: "Inmersión de madrugada. Desayuno a bordo. Regreso a Buenaventura. Transporte privado de regreso a Cali. Fin de la expedición.",
-    icon: "🏠",
-  },
-];
 
-const INCLUYE = [
-  "Vida a bordo en el barco SeaWolf (4 días, 3 noches)",
-  "Alimentación completa desde cena del 11 hasta desayuno del 14",
-  "6 buceos diurnos + posibilidad de 2 nocturnos",
-  "Seguro de viaje y buceo incluido",
-  "Acompañamiento de guías de buceo certificados",
-  "Transporte Cali – Buenaventura – Cali",
-  "Kit DivingLife",
-];
-
-const NO_INCLUYE = [
-  "Tiquetes aéreos a Cali",
-  "Alquiler de equipo de buceo (se coordina directamente)",
-  "Propinas y licores",
-  "Ítems no especificados en el programa",
-];
 
 const PRECIOS = [
   { tipo: "Múltiple Lower Deck", precio: "$4'290.000", tag: "Más popular" },
@@ -169,20 +136,20 @@ export default async function GorgonaPage({
           </div>
           <div className={styles.heroTag}>
             <Ship size={14} />
-            {isEs ? "SeaWolf · Liveaboard · Agosto 2026" : "SeaWolf · Liveaboard · August 2026"}
+            {isEs ? "SeaWolf · Liveaboard" : "SeaWolf · Liveaboard"}
           </div>
           <h1 className={styles.heroTitle}>
             {isEs ? "Gorgona: La Isla Ciencia" : "Gorgona: The Science Island"}
           </h1>
           <p className={styles.heroSubtitle}>
             {isEs
-              ? "Temporada de ballenas jorobadas. 11 – 14 agosto 2026. Una isla remota en el Pacífico colombiano, solo accesible en expedición vida a bordo del SeaWolf."
-              : "Humpback whale season. August 11–14, 2026. A remote island in the Colombian Pacific, only accessible on a liveaboard expedition aboard the SeaWolf."}
+              ? "Temporada de ballenas jorobadas de Julio a Noviembre. Una isla remota en el Pacífico colombiano, solo accesible en expedición vida a bordo del SeaWolf."
+              : "Humpback whale season from July to November. A remote island in the Colombian Pacific, only accessible on a liveaboard expedition aboard the SeaWolf."}
           </p>
           <div className={styles.heroStats}>
             <div className={styles.heroStat}>
               <Calendar size={16} />
-              <span>11–14 Ago 2026</span>
+              <span>{isEs ? "Julio – Noviembre" : "July – November"}</span>
             </div>
             <div className={styles.heroStat}>
               <Users size={16} />
@@ -258,32 +225,80 @@ export default async function GorgonaPage({
         </div>
       </section>
 
-      {/* ── ITINERARIO ── */}
+      {/* ── INFO EXPEDICIÓN ── */}
       <section className={`${styles.section} ${styles.sectionDark}`}>
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <div className={`${styles.sectionBadge} ${styles.badgeGold}`}>
               <Calendar size={14} />
-              {isEs ? "Itinerario" : "Schedule"}
+              {isEs ? "Información de la Expedición" : "Expedition Info"}
             </div>
             <h2 className={styles.sectionTitle}>
-              {isEs ? "4 Días de Expedición Completa" : "4 Days Full Expedition"}
+              {isEs ? "Detalles del Plan" : "Plan Details"}
             </h2>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: "800px", margin: "0 auto" }}>
-            {ITINERARIO.map((item, i) => (
-              <div key={i} style={{
-                display: "flex", gap: "1.5rem", alignItems: "flex-start",
-                background: "rgba(255,255,255,0.04)", borderRadius: "12px",
-                padding: "1.5rem", border: "1px solid rgba(255,255,255,0.1)"
-              }}>
-                <div style={{ fontSize: "2rem", lineHeight: 1 }}>{item.icon}</div>
-                <div>
-                  <strong style={{ color: "var(--color-primary)", display: "block", marginBottom: "0.5rem" }}>{item.dia}</strong>
-                  <p style={{ color: "var(--color-text-muted)", margin: 0, lineHeight: 1.7 }}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
+          
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginTop: "2rem" }}>
+            {/* Box 1 */}
+            <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "2rem", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <h3 style={{ color: "var(--color-primary)", marginBottom: "1rem", fontSize: "1.2rem" }}>🌊 ISLA GORGONA</h3>
+              <p style={{ color: "var(--color-text-muted)", marginBottom: "1.5rem" }}>
+                {isEs ? "Paraíso del Pacífico Colombiano ✨" : "Colombian Pacific Paradise ✨"}
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, color: "var(--color-text-muted)", display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <li style={{ display: "flex", gap: "0.75rem" }}>🐋 <span>{isEs ? "Vida a bordo en el barco SEA WOLF" : "Liveaboard on SEA WOLF"}</span></li>
+                <li style={{ display: "flex", gap: "0.75rem" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <span style={{ fontWeight: "bold" }}>{isEs ? "PRÓXIMAS SALIDAS 2026:" : "UPCOMING DEPARTURES 2026:"}</span>
+                    <span style={{ display: "flex", gap: "0.5rem" }}>📅 {isEs ? "OCTUBRE | 23 al 27" : "OCTOBER | 23 to 27"}</span>
+                    <span style={{ display: "flex", gap: "0.5rem" }}>📅 {isEs ? "DICIEMBRE | 04 al 08" : "DECEMBER | 04 to 08"}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Box 2 */}
+            <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "2rem", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <h3 style={{ color: "var(--color-primary)", marginBottom: "1.5rem", fontSize: "1.2rem" }}>✅ {isEs ? "EL PLAN INCLUYE" : "THE PLAN INCLUDES"}</h3>
+              <ul style={{ listStyle: "none", padding: 0, color: "var(--color-text-muted)", display: "flex", flexDirection: "column", gap: "0.75rem", fontSize: "0.9rem" }}>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🚤 <span>{isEs ? "Transporte Buenaventura – Gorgona – Buenaventura" : "Transport Buenaventura – Gorgona – Buenaventura"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🏨 <span>{isEs ? "Alojamiento 4 días / 4 noches a bordo del Sea Wolf" : "4 days / 4 nights accommodation on Sea Wolf"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🍽️ <span>{isEs ? "Alimentación completa (desayuno, almuerzo y cena)" : "Full meals (breakfast, lunch, dinner)"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🥤 <span>{isEs ? "Refrigerios entre inmersiones" : "Snacks between dives"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🏝️ <span>{isEs ? "Impuesto de entrada al PNN Isla Gorgona" : "Gorgona NNP entrance tax"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🤿 <span>{isEs ? "3 inmersiones diurnas por día" : "3 daytime dives per day"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🌙 <span>{isEs ? "2 inmersiones nocturnas (para buzos con certificación avanzada)" : "2 night dives (for advanced certified divers)"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🗺️ <span>{isEs ? "Traslado a los sitios de buceo" : "Transfer to dive sites"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>⚓ <span>{isEs ? "Servicio de bote" : "Boat service"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🧯 <span>{isEs ? "Tanque con aire y lastre" : "Tank with air and weights"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🧑‍🏫 <span>{isEs ? "Guía / Instructor de buceo" : "Dive Guide / Instructor"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🛡️ <span>{isEs ? "Seguro de buceo incluido" : "Dive insurance included"}</span></li>
+              </ul>
+            </div>
+
+            {/* Box 3 */}
+            <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "2rem", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <h3 style={{ color: "#ff7070", marginBottom: "1.5rem", fontSize: "1.2rem" }}>❌ {isEs ? "NO INCLUYE" : "NOT INCLUDED"}</h3>
+              <ul style={{ listStyle: "none", padding: 0, color: "var(--color-text-muted)", display: "flex", flexDirection: "column", gap: "0.75rem", fontSize: "0.9rem" }}>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🚐 <span>{isEs ? "Transporte Cali – Buenaventura – Cali" : "Transport Cali – Buenaventura – Cali"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🦺 <span>{isEs ? "Alquiler de chaleco hidrostático y regulador" : "BCD and regulator rental"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🥽 <span>{isEs ? "Alquiler de traje de buceo" : "Wetsuit rental"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>🔦 <span>{isEs ? "Alquiler de linterna y baterías" : "Flashlight and battery rental"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>💰 <span>{isEs ? "Propinas" : "Tips"}</span></li>
+                <li style={{ display: "flex", gap: "0.5rem" }}>📄 <span>{isEs ? "Servicios no especificados en el programa" : "Services not specified in the program"}</span></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style={{ marginTop: "3rem", padding: "2rem", background: "rgba(255,255,255,0.02)", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+            <h3 style={{ color: "var(--color-primary)", marginBottom: "1rem", fontSize: "1.1rem" }}>📜 {isEs ? "POLÍTICA DE CANCELACIÓN Y REEMBOLSO" : "CANCELLATION AND REFUND POLICY"}</h3>
+            <ul style={{ color: "var(--color-text-muted)", paddingLeft: "1.2rem", display: "flex", flexDirection: "column", gap: "0.5rem", fontSize: "0.9rem" }}>
+              <li>{isEs ? "Cancelación con 60 a 90 días de antelación → penalidad del 50%" : "Cancellation 60-90 days in advance → 50% penalty"}</li>
+              <li>{isEs ? "Cancelación con 30 a 60 días de antelación → penalidad del 70%" : "Cancellation 30-60 days in advance → 70% penalty"}</li>
+              <li>{isEs ? "No hay reembolso con cancelaciones a menos de 30 días del viaje." : "No refund for cancellations less than 30 days before the trip."}</li>
+              <li>{isEs ? "En casos médicos comprobables, se podrá otorgar nota de crédito o devolución parcial, descontando gastos bancarios y penalidades del operador." : "In verifiable medical cases, a credit note or partial refund may be granted, deducting bank charges and operator penalties."}</li>
+              <li>{isEs ? "No se reembolsa dinero por causas de fuerza mayor, clima o cancelaciones de aerolíneas." : "No refunds for force majeure, weather, or airline cancellations."}</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -336,52 +351,7 @@ export default async function GorgonaPage({
         </div>
       </section>
 
-      {/* ── INCLUYE / NO INCLUYE ── */}
-      <section className={`${styles.section} ${styles.sectionDark}`}>
-        <div className={styles.container}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
-            <div>
-              <div className={styles.sectionBadge} style={{ marginBottom: "1.5rem" }}>
-                <CheckCircle2 size={14} />
-                {isEs ? "Incluye" : "Includes"}
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {INCLUYE.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", marginBottom: "1rem", color: "var(--color-text-muted)" }}>
-                    <span style={{ color: "var(--color-primary)", marginTop: "2px", flexShrink: 0 }}>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className={`${styles.sectionBadge}`} style={{ marginBottom: "1.5rem", background: "rgba(255,80,80,0.12)", color: "#ff7070" }}>
-                <span style={{ fontSize: "0.8rem" }}>✗</span>
-                {isEs ? "No Incluye" : "Not Included"}
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {NO_INCLUYE.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", marginBottom: "1rem", color: "var(--color-text-muted)" }}>
-                    <span style={{ color: "#ff7070", marginTop: "2px", flexShrink: 0 }}>✗</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div style={{
-            marginTop: "2.5rem", padding: "1.25rem 1.5rem",
-            background: "rgba(0, 229, 255, 0.06)", borderRadius: "12px",
-            border: "1px solid rgba(0, 229, 255, 0.2)",
-            color: "var(--color-text-muted)", fontSize: "0.9rem", lineHeight: 1.7
-          }}>
-            <ShieldCheck size={16} style={{ color: "var(--color-primary)", marginRight: "0.5rem", verticalAlign: "middle" }} />
-            {isEs
-              ? "Con tu cupo estás apoyando la protección de 4 especies marinas: tiburones, tortugas, ballenas y corales. Agencia legalmente constituida · RNT 115032"
-              : "Your reservation supports the protection of 4 marine species: sharks, turtles, whales and corals. Legally registered agency · RNT 115032"}
-          </div>
-        </div>
-      </section>
+      {/* ── PRECIOS SECTION CONTINUES ── */}
 
       <ProfilesSection profiles={PROFILES} isEs={isEs} waLink={WA} />
       <TestimonialsSection testimonials={TESTIMONIALS} isEs={isEs} />
@@ -418,8 +388,8 @@ export default async function GorgonaPage({
       {/* ── CTA ── */}
       <section className={styles.ctaSection}>
         <div className={styles.container}>
-          <h2>{isEs ? "¡Cupos muy limitados — Agosto 2026!" : "Very Limited Spots — August 2026!"}</h2>
-          <p>{isEs ? "Embarcación SeaWolf · 11 al 14 de agosto · Temporada de ballenas jorobadas en el Pacífico colombiano." : "SeaWolf vessel · August 11–14 · Humpback whale season in the Colombian Pacific."}</p>
+          <h2>{isEs ? "¡Cupos muy limitados!" : "Very Limited Spots!"}</h2>
+          <p>{isEs ? "Embarcación SeaWolf · Temporada de ballenas jorobadas de Julio a Noviembre en el Pacífico colombiano." : "SeaWolf vessel · Humpback whale season from July to November in the Colombian Pacific."}</p>
           <a href={WA} target="_blank" rel="noopener noreferrer" className={styles.heroCta}>
             {isEs ? "Reservar mi Cupo Ahora" : "Book My Spot Now"}
             <ChevronRight size={18} />

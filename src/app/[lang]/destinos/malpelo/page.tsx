@@ -142,8 +142,8 @@ const DIVE_SPOTS = [
 
 const REQUISITOS = [
   { dish: "Advanced Open Water", img: "/images/img-9a1071ef.jpg", desc: "Es indispensable contar con certificación de buceo avanzado debido a las corrientes fuertes y profundidad.", tags: ["Obligatorio","Certificación"] },
-  { dish: "+50 Inmersiones", img: "/images/img-f0b2070e.jpg", desc: "Se requiere un mínimo de 50 inmersiones registradas en bitácora para garantizar la experiencia y seguridad del grupo.", tags: ["Experiencia","Seguridad"] },
-  { dish: "Certificación Nitrox", img: "/images/img-239db711.jpg", desc: "Necesaria para maximizar el tiempo de fondo de forma segura durante la expedición de vida a bordo.", tags: ["Técnico","Obligatorio"] },
+  { dish: "+50 Inmersiones", img: "/images/mascara.jpg", desc: "Se requiere un mínimo de 50 inmersiones registradas en bitácora para garantizar la experiencia y seguridad del grupo.", tags: ["Experiencia","Seguridad"] },
+  { dish: "Certificación Nitrox", img: "/images/nitrox.jpg", desc: "Necesaria para maximizar el tiempo de fondo de forma segura durante la expedición de vida a bordo.", tags: ["Técnico","Obligatorio"] },
   { dish: "Seguro de Buceo", img: "https://images.unsplash.com/photo-1620050853503-494bdf34139e?w=800&q=80", desc: "Seguro DAN u otro equivalente vigente con cobertura de evacuación médica y cámara hiperbárica.", tags: ["DAN","Seguridad"] },
 ];
 
@@ -156,26 +156,7 @@ export default async function MalpeloPage({ params }: { params: Promise<{ lang: 
   return (
     <main className={styles.page}>
       <Script id="ld-malpelo" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <section className={styles.hero} style={{ position: "relative", overflow: "hidden" }}>
-        {/* Background Video */}
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: "translate(-50%, -50%) scale(1.5)",
-            zIndex: 0
-          }}
-        >
-          <source src="/ferox.mov" type="video/mp4" />
-        </video>
+      <section className={styles.hero} style={{ position: "relative", overflow: "hidden", backgroundImage: "url('/images/malpelo1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
 
         <div className={styles.heroOverlay} style={{ zIndex: 1, backgroundColor: "rgba(0,0,0,0.6)" }} />
         <div className={styles.heroContent} style={{ zIndex: 2 }}>
@@ -203,11 +184,19 @@ export default async function MalpeloPage({ params }: { params: Promise<{ lang: 
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <div className={styles.sectionBadge}><Anchor size={14} />{isEs ? "Buceo Pelágico" : "Pelagic Diving"}</div>
-            <h2 className={styles.sectionTitle}>{isEs ? "El Reino de los Tiburones" : "The Kingdom of Sharks"}</h2>
+            <h2 className={styles.sectionTitle}>{isEs ? "Reino de Tiburones, Rayas y Mantas" : "Kingdom of Sharks, Rays and Mantas"}</h2>
             <p className={styles.sectionDesc}>{isEs ? "Santuario de Flora y Fauna de Malpelo. Una roca aislada en medio del Océano Pacífico, famosa mundialmente por los enormes cardúmenes de tiburones." : "Malpelo Flora and Fauna Sanctuary. An isolated rock in the Pacific Ocean, world famous for massive schools of sharks."}</p>
           </div>
           <div className={styles.diveImgWrap}>
-            <img src="/images/img-b4776222.jpg" alt="Sharks Malpelo" className={styles.diveImg} style={{ objectPosition: "center 20%" }} />
+            <video 
+              src="/videos/tiburon_martillo.mov" 
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              className={styles.diveImg} 
+              style={{ objectFit: "cover", width: "100%", height: "100%" }} 
+            />
             <div className={styles.diveImgOverlay}><span>{isEs ? "Santuario Marino · Corrientes fuertes" : "Marine Sanctuary · Strong currents"}</span></div>
           </div>
           <div className={styles.spotsGrid}>
